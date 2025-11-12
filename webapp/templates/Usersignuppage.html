@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Signup Form</title>
+  <link rel="stylesheet" href="{% static 'usersign/style.css' %}">
+</head>
+<body>
+  <div class="wrapper">
+    <form action="{% url 'Saveusersignup' %}" method="post">
+        {% csrf_token %}
+      <h2>Sign Up</h2>
+      <div class="input-field">
+        <input type="text" required name="signup_username">
+        <label>Enter your Username</label>
+      </div>
+      <div class="input-field">
+        <input type="email" required name="signup_email">
+        <label>Enter your Email</label>
+      </div>
+        <div class="input-field">
+        <input type="tel"  minlength="10" maxlength="10" pattern="[0-9]{10}" required name="signup_mobile">
+        <label>Enter your Mobile Number</label>
+      </div>
+      <div class="input-field">
+        <input type="password" required name="signup_password">
+        <label>Create password</label>
+      </div>
+      <div class="input-field">
+        <input type="password" required name="signup_confirm">
+        <label>Confirm password</label>
+      </div>
+<!--      <div class="forget">-->
+<!--        <label for="terms">-->
+<!--          <input type="checkbox" id="terms">-->
+<!--          <p>I agree to the <a href="#" class="terms-link">Terms & Conditions</a></p>-->
+<!--        </label>-->
+<!--      </div>-->
+      <button type="submit">Sign Up</button>
+      <div class="register">
+        <p>Already have an account? <a href="{% url 'Usersigninpage' %}">Login</a></p>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

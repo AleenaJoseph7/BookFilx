@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'index.html' %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Registration</title>
+</head>
+
+<body>
+        <div class="card mb-5 mt-5" style="height:auto; width:auto; margin:auto; border:1px solid lightgrey; ">
+        <div class="card-body">
+            <h1 class="text-center mb-5" style="color:darkblue; font-size:35px; font-weight:bold; font-family:Arial;">
+                Book Updation
+            </h1>
+            <form action="{% url 'updatebook' b_id=book.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label">Book Title :</label>
+                    <input type="text" class="form-control" placeholder="Book Title" name="book_title" value="{{book.Book_title}}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Author :</label>
+                    <input type="text" class="form-control" placeholder="Author" name="book_author" value="{{book.Book_author}}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Category :</label>
+                    <select class="form-control" name="book_category">
+                        <option>{{book.Book_category}}</option>
+                        {% for i in category %}
+                         <option >{{i.Catergory_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Price :</label>
+                    <input type="text" class="form-control" placeholder="Price" name="book_price" value="{{book.Book_price}}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Publisher :</label>
+                    <input type="text" class="form-control" placeholder="Publisher" name="book_publisher" value="{{book.Book_publisher}}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Description:</label>
+                    <textarea placeholder="Description" class="form-control" name="book_description">{{book.Book_description}}</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Cover Image :</label>
+                    <img src="{{book.Book_cover.url}}" height="150px" width="150px" class="mb-3">
+                    <input type="file" class="form-control" name="book_cover">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mb-3 mt-3" style="width:250px;">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'index.html' %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Details</title>
+</head>
+
+<body>
+      <div class="card mb-5 mt-5" style="height:auto; width:auto; margin:auto;border:1px solid lightgrey;">
+        <div class="card-body ">
+            <h1 class="text-center mb-5" style="color:darkblue; font-size:35px; font-weight:bold; font-family:Arial;">
+                Book Data</h1>
+
+                <table class="table table-bordered table-hover table-dark">
+                    <thead>
+                    <tr>
+                        <th>Book Cover</th>
+                        <th>Book Title</th>
+                        <th>Book Author</th>
+                        <th>Book Category</th>
+                        <th>Book Price</th>
+                        <th>Book Publisher</th>
+                        <th>Book Description</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+
+                    <tr>
+                         <td>
+                            <img src="{{i.Book_cover.url}}" height="100px" width="100px" class="rounded-circle">
+                        </td>
+                        <td>{{i.Book_title}}</td>
+                        <td>{{i.Book_author}}</td>
+                        <td>{{i.Book_category}}</td>
+                        <td>{{i.Book_price}}</td>
+                        <td>{{i.Book_publisher}}</td>
+                        <td>{{i.Book_description}}</td>
+                        <td>
+                            <a href="{% url 'editbook' b_id=i.id %}">
+                                <button type="submit" class="btn btn-outline-success">EDIT</button>
+                            </a>
+                             <a href="{% url 'deletebook' b_id=i.id %}">
+                                <button type="submit" class="btn btn-outline-danger">DELETE</button>
+                            </a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}
