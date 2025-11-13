@@ -164,6 +164,11 @@
                           </a>
                       </td>
                   </tr>
+                  {% empty %}
+                  <div class="text-center py-5">
+        <h5 class="text-muted">Your cart is empty.</h5>
+        <a href="{% url 'Popularpage' %}" class="btn btn-success mt-3">Continue Shopping</a>
+      </div>
                   {% endfor %}
 
                   </tbody>
