@@ -17,3 +17,13 @@ class contactdb(models.Model):
     def __str__(self):
         return self.Contact_fullname
 
+class cartdb(models.Model):
+    Singlebook_username=models.CharField(max_length=30,null=True,blank=True)
+    Singlebook_title=models.CharField(max_length=30,null=True,blank=True)
+    Singlebook_price=models.IntegerField(null=True,blank=True)
+    Singlebook_quantity=models.CharField(max_length=30,null=True,blank=True)
+    Singlebook_total=models.IntegerField(null=True,blank=True)
+    Singlebook_image=models.ImageField(upload_to="Cart Images",null=True,blank=True)
+
+    def __str__(self):
+        return self.Singlebook_title
