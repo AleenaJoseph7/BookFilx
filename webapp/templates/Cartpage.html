@@ -151,12 +151,6 @@
             <div class="slider-item">
               <div class="banner-content">
                 <h2 class="banner-title">Check Out</h2>
-                <p>
-                  Grab your favorite stories and dive into a world of imagination.
-                  <em>From thrilling mysteries to heartwarming tales</em>, BookFlix brings your next page-turner right
-                  to your hands.
-                  Checkout now and let the journey begin!
-                </p>
                 <div class="btn-wrap">
                   <a href="#" class="btn btn-outline-accent btn-accent-arrow">
                     Checkout <i class="icon icon-ns-arrow-right"></i>
@@ -184,19 +178,21 @@
           <div class="table-responsive container">
               <table class="table table-hover table-light table-bordered">
                   <tbody>
-
+                  {% for i in cart %}
                   <tr>
-                      <td><img src="" height="150px" width="150px" class="rounded-circle"></td>
-                      <td>Singlebook_title</td>
-                      <td>Singlebook_price</td>
-                      <td>Singlebook_quantity</td>
-                      <td>Singlebook_total</td>
+                      <td>working</td>
+                      <td><img src="{{i.Singlebook_image.url}}" height="150px" width="150px" class="rounded-circle"></td>
+                      <td>{{i.Singlebook_title}}</td>
+                      <td>{{i.Singlebook_price}}</td>
+                      <td>{{i.Singlebook_quantity}}</td>
+                      <td>{{i.Singlebook_total}}</td>
                       <td class="text-center">
                           <a href="#">
                               <button type="submit" class="btn btn-danger" style="width:120px; border-radius:20px; height:40px;">Delete</button>
                           </a>
                       </td>
                   </tr>
+                  {% endfor %}
 
                   </tbody>
               </table>
