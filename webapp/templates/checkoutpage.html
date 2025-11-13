@@ -153,8 +153,8 @@
                 <h2 class="banner-title">Check Out</h2>
 
                 <div class="btn-wrap">
-                  <a href="#" class="btn btn-outline-accent btn-accent-arrow">
-                    Checkout <i class="icon icon-ns-arrow-right"></i>
+                  <a href="{% url 'Cartpage' %}" class="btn btn-outline-accent btn-accent-arrow">
+                    Go To Cart <i class="icon icon-ns-arrow-right"></i>
                   </a>
                 </div>
               </div><!-- banner-content -->
@@ -168,42 +168,6 @@
           </div>
         </div>
       </div>
-
-  </section>
-
-  <section id="client-holder" data-aos="fade-up">
-    <div class="container">
-      <div class="row">
-        <div class="inner-content">
-          <div class="logo-wrap">
-            <div class="grid">
-              <a href="#"><img src="{% static 'web/images/client-image1.png' %}" alt="client"></a>
-              <a href="#"><img src="{% static 'web/images/client-image2.png' %}" alt="client"></a>
-              <a href="#"><img src="{% static 'web/images/client-image3.png' %}" alt="client"></a>
-              <a href="#"><img src="{% static 'web/images/client-image4.png' %}" alt="client"></a>
-              <a href="#"><img src="{% static 'web/images/client-image5.png' %}" alt="client"></a>
-            </div>
-          </div><!--image-holder-->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="quotation" class="align-center pb-5 mb-5">
-    <div class="inner-content">
-      <section id="quote-before-checkout" class="py-5 text-center bg-light">
-        <div class="container">
-          <h2 class="section-title divider mb-4 mt-5">Read, Reflect, Checkout</h2>
-          <blockquote class="blockquote" data-aos="fade-up">
-            <p class="mb-2">
-              “A book is a dream you hold in your hands, grab yours before it flies away!”
-            </p>
-          </blockquote>
-        </div>
-      </section>
-
-      </blockquote>
-    </div>
 
   </section>
 
@@ -246,45 +210,63 @@
                   <option>Cash on Delivery</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-primary w-100">Place Order</button>
+              <a href="#" type="submit" style=" width:100%; padding:14px 0;
+              background:#8B5E3C; color:white; border-radius:10px;
+              font-weight:600;" class="btn btn-primary">Place Order</a>
             </form>
           </div>
         </div>
 
-        <!-- Cart Summary / Add to Cart Setup -->
-        <div class="col-lg-6">
-          <div class="card shadow-sm p-4">
-            <h3 class="mb-4">Your Cart</h3>
+          <div class="receipt-section mt-5 mb-5 p-4 mx-auto"
+     style="width:500px; height:500px; background:#fff; border-radius:16px;
+            box-shadow:0 4px 16px rgba(0,0,0,0.08);">
 
-            {% for item in cart_items %}
-            <div class="d-flex align-items-center mb-3 border-bottom pb-3">
-              <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid"
-                style="width: 80px; height: auto; border-radius: 5px; object-fit: cover;">
-              <div class="ms-3 flex-grow-1">
-                <h5 class="mb-1">{{ item.product.name }}</h5>
-                <p class="mb-1 text-muted">{{ item.product.category }}</p>
-                <div class="d-flex align-items-center gap-2">
-                  <span class="fw-bold">₹{{ item.product.price }}</span>
-                  <input type="number" value="{{ item.quantity }}" min="1" class="form-control form-control-sm"
-                    style="width: 70px;">
-                </div>
-              </div>
-              <a href="#" class="text-danger ms-3 small">Remove</a>
-            </div>
-            {% empty %}
-            <p class="text-muted text-center">Your cart is empty.</p>
-            {% endfor %}
+  <h3 class=" mb-4"
+      style="font-weight:700; color:#8B5E3C; letter-spacing:0.5px;">
+      Order Details
+  </h3>
 
-            <div class="d-flex justify-content-between mt-4 border-top pt-3">
-              <strong>Total Amount:</strong>
-              <strong>₹{{ total_price }}</strong>
-            </div>
+  <div style="border-top:2px solid #eee; margin-bottom:20px;"></div>
 
-            <div class="mt-4">
-              <a href="#" class="btn btn-success w-100">Proceed to Payment</a>
-            </div>
-          </div>
-        </div>
+  <div class="d-flex justify-content-between mb-2">
+    <span style="font-weight:500;">Items in Cart</span>
+    <span style="font-weight:600;">10</span>
+  </div>
+
+  <div class="d-flex justify-content-between mb-2">
+    <span style="font-weight:500;">Subtotal</span>
+    <span style="font-weight:600;">Rs. 4500</span>
+  </div>
+
+<!--  <div class="d-flex justify-content-between mb-2 text-success">-->
+<!--    <span style="font-weight:500;">Discount</span>-->
+<!--    <span style="font-weight:600;">- ₹{{ discount }}</span>-->
+<!--  </div>-->
+
+  <div class="d-flex justify-content-between mb-2">
+    <span style="font-weight:500;">GST (5%)</span>
+    <span style="font-weight:600;">Rs. 120</span>
+  </div>
+
+  <div class="d-flex justify-content-between mb-3">
+    <span style="font-weight:500;">Delivery</span>
+    <span style="font-weight:600;">Rs. 50</span>
+  </div>
+
+  <div style="border-top:2px dashed #ddd; margin:20px 0;"></div>
+
+  <div class="d-flex justify-content-between mb-4">
+    <span style="font-size:18px; font-weight:700;">Total Payable</span>
+    <span style="font-size:18px; font-weight:700; color:#8B5E3C;">Rs. 4670</span>
+  </div>
+
+  <div class="text-center">
+    <a href="#" class="btn btn-primary" style=" width:100%; padding:14px 0;
+              background:#8B5E3C; color:white; border-radius:10px;
+              font-weight:600;">Proceed to Payment </a>
+  </div>
+</div>
+
 
       </div>
     </div>
