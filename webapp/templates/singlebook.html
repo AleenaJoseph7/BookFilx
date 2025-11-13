@@ -60,7 +60,7 @@
               {% endif %}
 
               <!-- Cart -->
-              <a href="#" class="cart for-buy me-4">
+              <a href="{% url 'Cartpage' %}" class="cart for-buy me-4">
                 <i class="icon icon-clipboard"></i><span>Cart</span>
               </a>
 
@@ -180,7 +180,7 @@
                   </p>
                   <div class="item-price">Rs. {{books.Book_price}}</div>
 
-                    <form>
+                    <form method="post" enctype="multipart/form-data">
                         <input type="number" min="1" max="10" class="form-control mb-3 mt-3" style="width:175px;" placeholder="quantity" value="1" name="singlebook_quantity">
                         <input type="text" class="form-control mb-3 mt-3" style="width:175px;" placeholder="Rs " name="singlebook_total">
                         <input type="hidden" class="form-control mb-3 mt-3" placeholder="Book Title" value="{{books.Book_title}}" name="singlebook_title">
@@ -189,7 +189,7 @@
 
                         {% if request.session.username %}
                          <div class="btn-wrap">
-                                <a  href="{% url 'Checkoutpage' %}" type="submit" class="btn btn-outline-primary"  style="border-radius:15px; height:40px;">Add To Cart<i class="icon icon-ns-arrow-right"></i>
+                                <a  href="{% url 'Cartpage' %}" type="submit" class="btn btn-outline-primary"  style="border-radius:15px; height:40px;">Add To Cart<i class="icon icon-ns-arrow-right"></i>
                                 </a>
                          </div>
                         {% else %}

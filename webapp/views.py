@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from Myapp.models import catergorydb,bookdb
-from webapp.models import  signupdb,contactdb
+from webapp.models import signupdb, contactdb, cartdb
 
 
 # Create your views here.
@@ -50,6 +50,12 @@ def savecontact(request):
         ob.save()
 
         return redirect(Contactpage)
+
+
+def Cartpage(request):
+    cart=cartdb.objects.all()
+    return render(request,"Cartpage.html",{'cart':cart})
+
 
 def Usersigninpage(request):
     return render(request,"Usersigninpage.html")
