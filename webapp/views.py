@@ -30,7 +30,6 @@ def Checkoutpage(request):
     category = catergorydb.objects.all()
     return render(request, "checkoutpage.html", {'category': category})
 
-
 def Filterbooks(request, category_name):
     category = catergorydb.objects.all()
     books = bookdb.objects.filter(Book_category=category_name)
