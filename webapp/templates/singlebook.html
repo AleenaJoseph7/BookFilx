@@ -186,14 +186,14 @@
 
                                 <form method="post" enctype="multipart/form-data">
                                     <input type="number" min="1" max="10" class="form-control mb-3 mt-3"
-                                           style="width:175px;" placeholder="quantity" value="1"
-                                           name="singlebook_quantity">
+                                           style="width:175px;" placeholder="quantity" value="0"
+                                           name="singlebook_quantity" id="singlebook_quantity">
                                     <input type="text" class="form-control mb-3 mt-3" style="width:175px;"
-                                           placeholder="Rs " name="singlebook_total">
+                                           placeholder="Rs " name="singlebook_total" id="singlebook_total">
                                     <input type="hidden" class="form-control mb-3 mt-3" placeholder="Book Title"
                                            value="{{books.Book_title}}" name="singlebook_title">
                                     <input type="hidden" class="form-control mb-3 mt-3" placeholder="Book price"
-                                           value="{{books.Book_price}}" name="singlebook_price">
+                                           value="{{books.Book_price}}" name="singlebook_price" id="singlebook_price">
                                     <input type="hidden" class="form-control mb-3 mt-3" placeholder="Username"
                                            value="{{request.session.username}}" name="singlebook_username">
 
@@ -392,7 +392,20 @@
         crossorigin="anonymous"></script>
 <script src="{% static 'web/js/plugins.js' %}"></script>
 <script src="{% static 'web/js/script.js' %}"></script>
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
 
+<script>
+    $(document).ready(function(){
+    $("#singlebook_quantity").change(function(){
+       let singlebookprice=document.getElementById("singlebook_price").value;
+       let singlebookquantity=document.getElementById("singlebook_quantity").value;
+       let result=singlebookprice*singlebookquantity;
+
+       document.getElementById("singlebook_total").value=result;
+    })
+
+    })
+</script>
 </body>
 
 </html>
