@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <form action="{% url 'Saveusersignup' %}" method="post">
+    <form action="{% url 'Saveusersignup' %}" method="post" name="myform" onsubmit="validation()">
         {% csrf_token %}
         <h2>Sign Up</h2>
         <div class="input-field">
@@ -25,11 +25,11 @@
             <label>Enter your Mobile Number</label>
         </div>
         <div class="input-field">
-            <input type="password" required name="signup_password">
+            <input type="password"  name="signup_password">
             <label>Create password</label>
         </div>
         <div class="input-field">
-            <input type="password" required name="signup_confirm">
+            <input type="password" name="signup_confirm">
             <label>Confirm password</label>
         </div>
         <!--      <div class="forget">-->
@@ -44,5 +44,33 @@
         </div>
     </form>
 </div>
+
+<script>
+    function validation(){
+    pwd1=document.myform.signup_password.value;
+    pwd2=document.myform.signup_confirm.value;
+
+    if (pwd1=="" || pwd1==null){
+    alert("Password Cannot be Null or Blank");
+    }
+
+    else if(pwd2=="" || pwd2==null){
+    alert("Confirm Password Cannot be Null or Blank !");
+    }
+
+    else if(pwd1.length<6){
+    alert("Password should contain atleast 6 Characters......!");
+    }
+
+    else if(pwd1==pwd2){
+   return true;
+    }
+
+    else{
+    alert("Password doesn't Match......!")
+    }
+
+    }
+</script>
 </body>
 </html>
