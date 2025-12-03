@@ -70,6 +70,18 @@ def Usersigninpage(request):
 def Usersignuppage(request):
     return render(request, "Usersignuppage.html")
 
+def SignupDisplaypage(request):
+    data=signupdb.objects.all()
+    return render(request,"signupdbdisplay.html",{'data':data})
+
+def DeleteSignup(request, user_id):
+    user = signupdb.objects.get(id=user_id)
+    user.delete()
+    return redirect("SignupDisplaypage")
+
+
+
+
 
 def Saveusersignup(request):
     if request.method == 'POST':
