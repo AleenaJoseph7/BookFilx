@@ -9,6 +9,8 @@ import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
 
+from django.contrib import messages
+
 # Create your views here.
 def index(request):
     mcount=contactdb.objects.count()
@@ -33,6 +35,7 @@ def savecatergory(request):
                        Catergory_description=catergory_description,
                        Catergory_cover=catergory_cover)
         ob.save()
+        messages.success(request,"Catergory Saved Succesfully!")
         return redirect(addcatergory)
 
 def displaycatergory(request):

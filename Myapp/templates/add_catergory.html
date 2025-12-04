@@ -37,6 +37,17 @@
             </form>
         </div>
     </div>
+<script src=""></script>
+
+{% if messages %}
+        {% for i in messages %}
+            {% if i.tags == 'success' %}
+                <script>
+                    swal('{{i}}','','success')
+                </script>
+            {% endif %}
+        {% endfor %}
+{% endif %}
 </body>
 
 </html>

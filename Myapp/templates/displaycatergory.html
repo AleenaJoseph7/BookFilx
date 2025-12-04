@@ -10,7 +10,7 @@
 
 <body>
         <div class="card mb-5 mt-5" style="height:auto; width:auto; margin:auto; border:1px solid lightgrey;">
-        <div class="card-body ">
+        <div class="card-body table-responsive">
             <h1 class="text-center mb-5" style="color:darkblue; font-size:35px; font-weight:bold; font-family:Arial;">
                 Catergory Data</h1>
 
@@ -20,7 +20,8 @@
                         <th>Catergory Cover</th>
                         <th>Catergory Name</th>
                         <th>Catergory Description</th>
-                        <th>Options</th>
+                        <th>Option</th>
+                        <th>Option</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,8 @@
                             <a href="{% url 'editcatergory' c_id=i.id %}">
                                 <button type="submit" class="btn btn-outline-success">EDIT</button>
                             </a>
+                            </td>
+                        <td>
                              <a href="{% url 'deletecatergory' c_id=i.id %}">
                                 <button type="submit" class="btn btn-outline-danger">DELETE</button>
                             </a>
