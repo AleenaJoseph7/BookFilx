@@ -180,14 +180,18 @@ def adminlogin(request):
                 login(request, data)
                 request.session['username'] = username
                 request.session['password'] = password
+                msg=messages.success(request, "Admin Login Successful")
                 return redirect(index)
             else:
+                messages.error(request,"Incorrect Password or Username!")
                 return redirect(adminloginpage)
         else:
+            messages.error(request, "Username doesnt Exist!")
             return redirect(adminloginpage)
 
 
 def adminlogout(request):
     del request.session['username']
     del request.session['password']
+    messages.success(request, "Admin Logout Successful")
     return redirect(adminloginpage)
