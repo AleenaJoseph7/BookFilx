@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from Myapp.models import catergorydb, bookdb
 from webapp.models import signupdb, contactdb, cartdb
+from django.contrib import messages
 
 
 # Create your views here.
@@ -54,7 +55,7 @@ def savecontact(request):
                        Contact_message=contact_message)
 
         ob.save()
-
+        messages.success(request,"Feedback Added Succesfully!")
         return redirect(Contactpage)
 
 
@@ -98,15 +99,17 @@ def Saveusersignup(request):
                       Signup_confirm=signup_confirm)
 
         if signupdb.objects.filter(Signup_username=signup_username).exists():
-            # alert message
+            messages.error(request,"Username Already Exists!")
             return redirect(Usersignuppage)
         elif signupdb.objects.filter(Signup_email=signup_email).exists():
-            # alert message
+            messages.error(request,"Email Already Exists!")
             return redirect(Usersignuppage)
         elif signupdb.objects.filter(Signup_mobile=signup_mobile).exists():
+            messages.error(request,"Mobile Number Already Exists!")
             return redirect(Usersignuppage)
         else:
             ob.save()
+            messages.success(request,"Sign up Successfull!")
             return redirect(Usersigninpage)
 
 
@@ -118,17 +121,20 @@ def login(request):
         if signupdb.objects.filter(Signup_username=signin_username, Signup_password=signin_password).exists():
             request.session['username'] = signin_username
             request.session['password'] = signin_password
+            messages.success(request,"Login Successfull!")
             return redirect(Homepage)
 
         else:
+            messages.error(request,"Username or Password  Incorrect!")
             return redirect(Usersigninpage)
 
     else:
+        messages.error(request, "Tru Again !")
         return redirect(Usersigninpage)
 
 
 def logout(request):
     del request.session['username']
     del request.session['password']
-
+    messages.success(request, "Logout Succesfull!")
     return redirect(Usersigninpage)
