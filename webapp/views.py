@@ -73,8 +73,9 @@ def savecart(request):
         singlebook_price=request.POST.get('singlebook_price')
         singlebook_username=request.POST.get('singlebook_username')
         book=bookdb.objects.filter(Book_title=singlebook_title).first()
+        singlebook_image = book.Book_cover
         bookid=book.id
-        singlebook_image=book.Book_cover
+
 
         ob=cartdb(Singlebook_username=singlebook_username,
                     Singlebook_title=singlebook_title,
