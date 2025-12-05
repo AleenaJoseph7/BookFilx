@@ -82,6 +82,7 @@ def savecart(request):
                     Singlebook_image=singlebook_image)
 
         ob.save()
+        messages.success(request,"Added to Cart !")
         return redirect(Homepage)
 
 
