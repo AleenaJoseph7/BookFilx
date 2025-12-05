@@ -40,7 +40,7 @@ def Filterbooks(request, category_name):
 def Singlebook(request, book_id):
     category = catergorydb.objects.all()
     books = bookdb.objects.get(id=book_id)
-    return render(request, "singlebook.html", {'books': books, 'category': category, })
+    return render(request, "singlebook.html", {'books': books, 'category': category})
 
 
 def savecontact(request):
