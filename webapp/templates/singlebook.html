@@ -183,7 +183,7 @@
                                     {{books.Book_description}}
                                 </p>
                                 <div class="item-price">Rs. {{books.Book_price}}</div>
-
+                                {% if request.session.username %}
                                 <form method="post" enctype="multipart/form-data">
                                     <input type="number" min="1" max="10" class="form-control mb-3 mt-3"
                                            style="width:175px;" placeholder="quantity" value="0"
@@ -197,7 +197,7 @@
                                     <input type="hidden" class="form-control mb-3 mt-3" placeholder="Username"
                                            value="{{request.session.username}}" name="singlebook_username">
 
-                                    {% if request.session.username %}
+
                                     <div class="btn-wrap">
                                         <a href="{% url 'Cartpage' %}" type="submit" class="btn btn-outline-primary"
                                            style="border-radius:15px; height:40px;">Add To Cart<i
