@@ -71,9 +71,10 @@ def savecart(request):
         singlebook_title=request.POST.get('singlebook_title')
         singlebook_price=request.POST.get('singlebook_price')
         singlebook_username=request.POST.get('singlebook_username')
-        singlebook_image=request.POST.get('singlebook_image')
+        book=bookdb.objects.filter(Book_title=singlebook_title).first()
+        singlebook_image=book.Book_cover
 
-        ob=Cartpage(Singlebook_username=singlebook_username,
+        ob=cartdb(Singlebook_username=singlebook_username,
                     Singlebook_title=singlebook_title,
                     Singlebook_price=singlebook_price,
                     Singlebook_quantity=singlebook_quantity,
@@ -81,7 +82,7 @@ def savecart(request):
                     Singlebook_image=singlebook_image)
 
         ob.save()
-        return redirect(Cartpage)
+        return redirect(Homepage)
 
 
 
