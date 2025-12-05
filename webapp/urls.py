@@ -10,7 +10,9 @@ urlpatterns = [
     path('Filterbooks/<category_name>/', views.Filterbooks, name="Filterbooks"),
     path('Singlebook/<int:book_id>/', views.Singlebook, name="Singlebook"),
     path('savecontact/', views.savecontact, name="savecontact"),
+
     path('Cartpage/', views.Cartpage, name="Cartpage"),
+    path('savecart/', views.savecart, name="savecart"),
 
     path('Usersigninpage/', views.Usersigninpage, name="Usersigninpage"),
     path('Usersignuppage/', views.Usersignuppage, name="Usersignuppage"),

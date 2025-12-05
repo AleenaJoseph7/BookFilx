@@ -64,6 +64,26 @@ def Cartpage(request):
     category=catergorydb.objects.all()
     return render(request, "Cartpage.html", {'cart': cart,'category':category})
 
+def savecart(request):
+    if request.method=='POST':
+        singlebook_quantity=request.POST.get('singlebook_quantity')
+        singlebook_total=request.POST.get('singlebook_total')
+        singlebook_title=request.POST.get('singlebook_title')
+        singlebook_price=request.POST.get('singlebook_price')
+        singlebook_username=request.POST.get('singlebook_username')
+        singlebook_image=request.POST.get('singlebook_image')
+
+        ob=Cartpage(Singlebook_username=singlebook_username,
+                    Singlebook_title=singlebook_title,
+                    Singlebook_price=singlebook_price,
+                    Singlebook_quantity=singlebook_quantity,
+                    Singlebook_total=singlebook_total,
+                    Singlebook_image=singlebook_image)
+
+        ob.save()
+        return redirect(Cartpage)
+
+
 
 def Usersigninpage(request):
     return render(request, "Usersigninpage.html")
