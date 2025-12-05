@@ -27,6 +27,7 @@ class cartdb(models.Model):
     Singlebook_quantity = models.CharField(max_length=30, null=True, blank=True)
     Singlebook_total = models.IntegerField(null=True, blank=True)
     Singlebook_image = models.ImageField(upload_to="Cart Images", null=True, blank=True)
+    Bookid=models.IntegerField(null=True,blank=True)
 
     def __str__(self):
         return self.Singlebook_title

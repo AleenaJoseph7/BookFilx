@@ -154,19 +154,36 @@
                     <hr style="border:1.5px solid grey; border-radius:12px; width:500px;">
                 </div>
                 <table class="table table-hover table-light table-bordered">
+                    <thead >
+                    <tr >
+                        <th style="text-align:center;">Book</th>
+                        <th style="text-align:center;">Title</th>
+                        <th style="text-align:center;">Price</th>
+                        <th style="text-align:center;">Quantity</th>
+                        <th style="text-align:center;">Total Amount</th>
+                        <th style="text-align:center;">Options</th>
+                    </tr>
+                    </thead>
                     <tbody>
                     {% for i in cart %}
-                    <tr>
-                        <td><img src="{{i.Singlebook_image.url}}" height="150px" width="150px" class="rounded-circle">
+                    <tr style="text-center">
+                        <td class="text-center"><img src="{{i.Singlebook_image.url}}" height="150px" width="150px" >
                         </td>
-                        <td>{{i.Singlebook_title}}</td>
-                        <td>{{i.Singlebook_price}}</td>
-                        <td>{{i.Singlebook_quantity}}</td>
-                        <td>{{i.Singlebook_total}}</td>
-                        <td class="text-center">
-                            <a href="#">
+                        <td style="text-align:center;">{{i.Singlebook_title}}</td>
+                        <td style="text-align:center;">Rs. {{i.Singlebook_price}}</td>
+                        <td style="text-align:center;">{{i.Singlebook_quantity}}</td>
+                        <td style="text-align:center;">Rs. {{i.Singlebook_total}}</td>
+                        <td  style="gap:20px; text-align:center;">
+
+                            <a href="{% url 'Singlebook' book_id=i.Bookid %}" >
+                                <button type="submit" class="btn btn-success"
+                                        style="width:120px; border-radius:20px; height:40px; ">Edit
+                                </button>
+                            </a>
+
+                            <a href="{% url 'deletecart' c_id=i.id %}">
                                 <button type="submit" class="btn btn-danger"
-                                        style="width:120px; border-radius:20px; height:40px;">Delete
+                                        style="width:120px; border-radius:20px; height:40px;">Remove
                                 </button>
                             </a>
                         </td>

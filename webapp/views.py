@@ -62,7 +62,8 @@ def savecontact(request):
 def Cartpage(request):
     cart = cartdb.objects.all()
     category=catergorydb.objects.all()
-    return render(request, "Cartpage.html", {'cart': cart,'category':category})
+    books=bookdb.objects.all()
+    return render(request, "Cartpage.html", {'cart': cart,'category':category,'books':books})
 
 def savecart(request):
     if request.method=='POST':
@@ -72,6 +73,7 @@ def savecart(request):
         singlebook_price=request.POST.get('singlebook_price')
         singlebook_username=request.POST.get('singlebook_username')
         book=bookdb.objects.filter(Book_title=singlebook_title).first()
+        bookid=book.id
         singlebook_image=book.Book_cover
 
         ob=cartdb(Singlebook_username=singlebook_username,
@@ -79,11 +81,16 @@ def savecart(request):
                     Singlebook_price=singlebook_price,
                     Singlebook_quantity=singlebook_quantity,
                     Singlebook_total=singlebook_total,
-                    Singlebook_image=singlebook_image)
+                    Singlebook_image=singlebook_image,
+                  Bookid=bookid)
 
         ob.save()
         messages.success(request,"Added to Cart !")
         return redirect(Homepage)
+
+def deletecart(request,c_id):
+    data=cartdb.objects.filter(id=c_id).delete()
+    return redirect(Cartpage)
 
 
 
