@@ -61,7 +61,8 @@ def savecontact(request):
 
 def Cartpage(request):
     cart = cartdb.objects.all()
-    return render(request, "Cartpage.html", {'cart': cart})
+    category=catergorydb.objects.all()
+    return render(request, "Cartpage.html", {'cart': cart,'category':category})
 
 
 def Usersigninpage(request):
