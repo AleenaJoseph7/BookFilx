@@ -6,7 +6,6 @@ urlpatterns = [
     path('AboutPage/', views.Aboutpage, name="Aboutpage"),
     path('Contactpage/', views.Contactpage, name="Contactpage"),
     path('Popularpage/', views.Popularpage, name="Popularpage"),
-    path('Checkoutpage/', views.Checkoutpage, name="Checkoutpage"),
     path('Filterbooks/<category_name>/', views.Filterbooks, name="Filterbooks"),
     path('Singlebook/<int:book_id>/', views.Singlebook, name="Singlebook"),
     path('savecontact/', views.savecontact, name="savecontact"),
@@ -14,6 +13,9 @@ urlpatterns = [
     path('Cartpage/', views.Cartpage, name="Cartpage"),
     path('savecart/', views.savecart, name="savecart"),
     path('deletecart/<int:c_id>/', views.deletecart, name="deletecart"),
+
+    path('Checkoutpage/', views.Checkoutpage, name="Checkoutpage"),
+    path('savecheckout/', views.savecheckout, name="savecheckout"),
 
     path('Usersigninpage/', views.Usersigninpage, name="Usersigninpage"),
     path('Usersignuppage/', views.Usersignuppage, name="Usersignuppage"),
