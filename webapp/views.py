@@ -207,6 +207,7 @@ def savecheckout(request):
                         Total_amount=total_amount)
 
         ob.save()
+        messages.success(request,"Checkout Successfully!")
         return redirect(PaymentPage)
 
 def PaymentPage(request):
