@@ -113,14 +113,16 @@ def Cartpage(request):
     total_amount = 0
     delivery = 0
     gst = 0
+    discount=0
     for i in cart:
         sub_total += i.Singlebook_total
         if sub_total < 500:
             delivery = 50
         else:
             delivery = 0
+        discount=round((sub_total*0.10))
         gst = round((sub_total+delivery) * 0.05)
-        total_amount = round(sub_total + gst + delivery)
+        total_amount = round(((sub_total + gst + delivery)-discount))
 
 
 
@@ -132,7 +134,8 @@ def Cartpage(request):
                    'sub_total': sub_total,
                    'delivery': delivery,
                    'gst': gst,
-                   'total_amount': total_amount})
+                   'total_amount': total_amount,
+                   'discount':discount})
 
 
 def savecart(request):
