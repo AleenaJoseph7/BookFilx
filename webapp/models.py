@@ -31,3 +31,11 @@ class cartdb(models.Model):
 
     def __str__(self):
         return self.Singlebook_title
+
+class Checkoutdb(models.Model):
+    Fullname=models.CharField(max_length=30,null=True,blank=True)
+    Email=models.EmailField(max_length=30,null=True,blank=True)
+    Phone=models.IntegerField(null=True,blank=True)
+    Address=models.TextField(null=True,blank=True)
+    Pincode=models.IntegerField(null=True,blank=True)
+    Total_amount=models.IntegerField(null=True,blank=True)

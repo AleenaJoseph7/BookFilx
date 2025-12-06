@@ -203,21 +203,24 @@
                                    required>
                         </div>
                         <div class="mb-3">
-                            <label for="address" class="form-label">Address *</label>
+                            <div class="d-flex" style="gap:300px;">
+                                <label for="address" class="form-label">Address *</label>
+                                <label for="address" class="form-label">Pincode *</label>
+                            </div>
+                            <div class="d-flex" style="gap:20px;">
                             <textarea id="address" name="address" rows="3" class="form-control"
                                       placeholder="Your delivery address"
                                       required></textarea>
+                            <input type="text" placeholder="Pincode" name="pincode" class="form-control" required style="height:40px; width:200px;">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="payment" class="form-label">Payment Method *</label>
-                            <select id="payment" name="payment" class="form-select" required>
-                                <option value="">Select a payment method</option>
-                                <option>Credit / Debit Card</option>
-                                <option>UPI</option>
-                                <option>Net Banking</option>
-                                <option>Cash on Delivery</option>
-                            </select>
+
+                         <div  hidden>
+                            <label  class="form-label">Total Amount *</label>
+                            <input type="text"  name="total_amount" class="form-control"
+                                   placeholder="Total Amount" required  value="{{total_amount}}">
                         </div>
+
                         <a href="#" type="submit" style=" width:100%; padding:14px 0;
               background:#8B5E3C; color:white; border-radius:10px;
               font-weight:600;" class="btn btn-primary">Place Order</a>
@@ -226,8 +229,8 @@
             </div>
 
             <div class="receipt-section mt-5 mb-5 p-4 mx-auto"
-                 style="width:500px; height:500px; background:#fff; border-radius:16px;
-            box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+                 style="max-width:500px; background:#fff; border-radius:16px;
+            box-shadow:0 4px 16px rgba(0,0,0,0.08); height:450px;">
 
                 <h3 class=" mb-4"
                     style="font-weight:700; color:#8B5E3C; letter-spacing:0.5px;">
@@ -238,40 +241,34 @@
 
                 <div class="d-flex justify-content-between mb-2">
                     <span style="font-weight:500;">Items in Cart</span>
-                    <span style="font-weight:600;">10</span>
+                    <span style="font-weight:600;">{{cart_count}}</span>
                 </div>
 
                 <div class="d-flex justify-content-between mb-2">
                     <span style="font-weight:500;">Subtotal</span>
-                    <span style="font-weight:600;">Rs. 4500</span>
+                    <span style="font-weight:600;">Rs. {{sub_total}}</span>
                 </div>
-
-                <!--  <div class="d-flex justify-content-between mb-2 text-success">-->
-                <!--    <span style="font-weight:500;">Discount</span>-->
-                <!--    <span style="font-weight:600;">- ₹{{ discount }}</span>-->
-                <!--  </div>-->
 
                 <div class="d-flex justify-content-between mb-2">
                     <span style="font-weight:500;">GST (5%)</span>
-                    <span style="font-weight:600;">Rs. 120</span>
+                    <span style="font-weight:600;">Rs. {{gst}}</span>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2">
+                    <span style="font-weight:500;">Discount</span>
+                    <span style="font-weight:600;">Rs. {{discount}}</span>
                 </div>
 
                 <div class="d-flex justify-content-between mb-3">
                     <span style="font-weight:500;">Delivery</span>
-                    <span style="font-weight:600;">Rs. 50</span>
+                    <span style="font-weight:600;">Rs. {{delivery}}</span>
                 </div>
 
                 <div style="border-top:2px dashed #ddd; margin:20px 0;"></div>
 
                 <div class="d-flex justify-content-between mb-4">
                     <span style="font-size:18px; font-weight:700;">Total Payable</span>
-                    <span style="font-size:18px; font-weight:700; color:#8B5E3C;">Rs. 4670</span>
-                </div>
-
-                <div class="text-center">
-                    <a href="#" class="btn btn-primary" style=" width:100%; padding:14px 0;
-              background:#8B5E3C; color:white; border-radius:10px;
-              font-weight:600;">Proceed to Payment </a>
+                    <span style="font-size:18px; font-weight:700; color:#8B5E3C;">Rs. {{total_amount}}</span>
                 </div>
             </div>
 
