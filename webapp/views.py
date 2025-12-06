@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from Myapp.models import catergorydb, bookdb
-from webapp.models import signupdb, contactdb, cartdb,Checkoutdb
+from webapp.models import signupdb, contactdb, cartdb, Checkoutdb
 from django.contrib import messages
 
 
@@ -57,7 +57,7 @@ def Checkoutpage(request):
 
     category = catergorydb.objects.all()
 
-    cart=cartdb.objects.filter(Singlebook_username=request.session['username'])
+    cart = cartdb.objects.filter(Singlebook_username=request.session['username'])
     # receipt calculation
     sub_total = 0
     total_amount = 0
@@ -80,7 +80,7 @@ def Checkoutpage(request):
                                                  'gst': gst,
                                                  'total_amount': total_amount,
                                                  'discount': discount,
-                                                 'cart':cart
+                                                 'cart': cart
                                                  })
 
 
@@ -138,18 +138,16 @@ def Cartpage(request):
     total_amount = 0
     delivery = 0
     gst = 0
-    discount=0
+    discount = 0
     for i in cart:
         sub_total += i.Singlebook_total
         if sub_total < 500:
             delivery = 50
         else:
             delivery = 0
-        discount=round((sub_total*0.10))
-        gst = round((sub_total+delivery) * 0.05)
-        total_amount = round(((sub_total + gst + delivery)-discount))
-
-
+        discount = round((sub_total * 0.10))
+        gst = round((sub_total + delivery) * 0.05)
+        total_amount = round(((sub_total + gst + delivery) - discount))
 
     return render(request, "Cartpage.html",
                   {'cart': cart,
@@ -160,7 +158,7 @@ def Cartpage(request):
                    'delivery': delivery,
                    'gst': gst,
                    'total_amount': total_amount,
-                   'discount':discount})
+                   'discount': discount})
 
 
 def savecart(request):
@@ -191,24 +189,26 @@ def deletecart(request, c_id):
     data = cartdb.objects.filter(id=c_id).delete()
     return redirect(Cartpage)
 
-def savecheckout(request):
-    if request.method=='POST':
-        fullname=request.POST.get('fullname')
-        email=request.POST.get('email')
-        phone=request.POST.get('phone')
-        address=request.POST.get('address')
-        pincode=request.POST.get('pincode')
-        total_amount=request.POST.get('total_amount')
 
-        ob=Checkoutdb(Fullname=fullname,
-                      Email=email,
-                      Phone=phone,
-                      Address=address,
-                      Pincode=pincode,
-                      Total_amount=total_amount)
+def savecheckout(request):
+    if request.method == 'POST':
+        fullname = request.POST.get('fullname')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        pincode = request.POST.get('pincode')
+        total_amount = request.POST.get('total_amount')
+
+        ob = Checkoutdb(Fullname=fullname,
+                        Email=email,
+                        Phone=phone,
+                        Address=address,
+                        Pincode=pincode,
+                        Total_amount=total_amount)
 
         ob.save()
         return redirect(Checkoutpage)
+
 
 def Usersigninpage(request):
     return render(request, "Usersigninpage.html")
