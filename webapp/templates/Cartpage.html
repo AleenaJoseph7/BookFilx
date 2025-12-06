@@ -64,7 +64,7 @@
                         <a href="{% url 'Cartpage' %}" class="cart for-buy me-4">
                             <i class="icon icon-clipboard"></i><span>Cart</span>
                         </a>
-
+                        {% endif %}
                         <!-- Search -->
                         <div class="action-menu">
                             <div class="search-bar">
@@ -175,12 +175,6 @@
                         <td style="text-align:center;">{{i.Singlebook_quantity}}</td>
                         <td style="text-align:center;">Rs. {{i.Singlebook_total}}</td>
                         <td  style="gap:20px; text-align:center;">
-
-                            <a href="{% url 'Singlebook' book_id=i.Bookid %}" >
-                                <button type="submit" class="btn btn-success"
-                                        style="width:120px; border-radius:20px; height:40px; ">Edit
-                                </button>
-                            </a>
 
                             <a href="{% url 'deletecart' c_id=i.id %}">
                                 <button type="submit" class="btn btn-danger"
