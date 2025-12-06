@@ -208,12 +208,12 @@
 
                 <div class="d-flex justify-content-between mb-2">
                     <span style="font-weight:500;">Items in Cart</span>
-                    <span style="font-weight:600;">10</span>
+                    <span style="font-weight:600;">{{cart_count}}</span>
                 </div>
 
                 <div class="d-flex justify-content-between mb-2">
                     <span style="font-weight:500;">Subtotal</span>
-                    <span style="font-weight:600;">Rs. 4500</span>
+                    <span style="font-weight:600;">Rs. {{sub_total}}</span>
                 </div>
 
                 <!--  <div class="d-flex justify-content-between mb-2 text-success">-->
@@ -223,19 +223,19 @@
 
                 <div class="d-flex justify-content-between mb-2">
                     <span style="font-weight:500;">GST (5%)</span>
-                    <span style="font-weight:600;">Rs. 120</span>
+                    <span style="font-weight:600;">Rs. {{gst}}</span>
                 </div>
 
                 <div class="d-flex justify-content-between mb-3">
                     <span style="font-weight:500;">Delivery</span>
-                    <span style="font-weight:600;">Rs. 50</span>
+                    <span style="font-weight:600;">Rs. {{delivery}}</span>
                 </div>
 
                 <div style="border-top:2px dashed #ddd; margin:20px 0;"></div>
 
                 <div class="d-flex justify-content-between mb-4">
                     <span style="font-size:18px; font-weight:700;">Total Payable</span>
-                    <span style="font-size:18px; font-weight:700; color:#8B5E3C;">Rs. 4670</span>
+                    <span style="font-size:18px; font-weight:700; color:#8B5E3C;">Rs. {{total_amount}}</span>
                 </div>
 
                 <div class="text-center">
