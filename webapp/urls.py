@@ -17,6 +17,8 @@ urlpatterns = [
     path('Checkoutpage/', views.Checkoutpage, name="Checkoutpage"),
     path('savecheckout/', views.savecheckout, name="savecheckout"),
 
+    path('PaymentPage/',views.PaymentPage,name="PaymentPage"),
+
     path('Usersigninpage/', views.Usersigninpage, name="Usersigninpage"),
     path('Usersignuppage/', views.Usersignuppage, name="Usersignuppage"),
     path('Saveusersignup/', views.Saveusersignup, name="Saveusersignup"),

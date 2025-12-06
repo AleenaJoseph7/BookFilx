@@ -155,17 +155,16 @@
                 <div class="main-slider pattern-overlay">
                     <div class="slider-item">
                         <div class="banner-content">
-                            <h2 class="banner-title">Check Out</h2>
+                            <h2 class="banner-title">Payment</h2>
 
                             <div class="btn-wrap">
                                 <a href="{% url 'Cartpage' %}" class="btn btn-outline-accent btn-accent-arrow">
-                                    Go To Cart <i class="icon icon-ns-arrow-right"></i>
+                                    Proceed To Pay <i class="icon icon-ns-arrow-right"></i>
                                 </a>
                             </div>
                         </div><!-- banner-content -->
-                        <img src="{% static 'web/images/cart.jpg' %}" alt="checkout banner" class="banner-image"
-                             width="350px"
-                             height="400px" style="border-radius:60px; object-fit: cover;">
+                        <img src="{% static 'web/images/payment.jpg' %}" alt="checkout banner" class="banner-image"
+                             width="350px" style="border-radius:60px; object-fit: cover; height:500px;">
                     </div><!-- slider-item -->
 
 
@@ -178,101 +177,6 @@
 <section id="checkout" class="py-5">
     <div class="container">
 
-        <div class="row g-4">
-
-            <!-- Billing Details -->
-            <div class="col-lg-6">
-                <div class="card shadow-sm p-4">
-                    <h3 class="mb-4">Billing Details</h3>
-                    <form action="{% url 'savecheckout' %}" method="POST">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="fullname" class="form-label">Full Name *</label>
-                            <input type="text" id="fullname" name="fullname" class="form-control"
-                                   placeholder="Enter your name"
-                                   required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email *</label>
-                            <input type="email" id="email" name="email" class="form-control"
-                                   placeholder="you@example.com" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Phone *</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Mobile Number"
-                                   required>
-                        </div>
-                        <div class="mb-3">
-                            <div class="d-flex" style="gap:300px;">
-                                <label for="address" class="form-label">Address *</label>
-                                <label for="address" class="form-label">Pincode *</label>
-                            </div>
-                            <div class="d-flex" style="gap:20px;">
-                            <textarea id="address" name="address" rows="3" class="form-control"
-                                      placeholder="Your delivery address"
-                                      required></textarea>
-                                <input type="text" placeholder="Pincode" name="pincode" class="form-control" required
-                                       style="height:40px; width:200px;">
-                            </div>
-                        </div>
-
-                        <div hidden>
-                            <label class="form-label">Total Amount *</label>
-                            <input type="text" name="total_amount" class="form-control"
-                                   placeholder="Total Amount" required value="{{total_amount}}">
-                        </div>
-
-                        <button  type="submit" style=" width:100%;
-              background:#8B5E3C; color:white; border-radius:10px;
-              font-weight:600; height:50px;" class="btn btn-primary">Place Order</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="receipt-section mt-5 mb-5 p-4 mx-auto"
-                 style="max-width:500px; background:#fff; border-radius:16px;
-            box-shadow:0 4px 16px rgba(0,0,0,0.08); height:450px;">
-
-                <h3 class=" mb-4"
-                    style="font-weight:700; color:#8B5E3C; letter-spacing:0.5px;">
-                    Receipt
-                </h3>
-
-                <div style="border-top:2px solid #eee; margin-bottom:20px;"></div>
-
-                <div class="d-flex justify-content-between mb-2">
-                    <span style="font-weight:500;">Items in Cart</span>
-                    <span style="font-weight:600;">{{cart_count}}</span>
-                </div>
-
-                <div class="d-flex justify-content-between mb-2">
-                    <span style="font-weight:500;">Subtotal</span>
-                    <span style="font-weight:600;">Rs. {{sub_total}}</span>
-                </div>
-
-                <div class="d-flex justify-content-between mb-2">
-                    <span style="font-weight:500;">GST (5%)</span>
-                    <span style="font-weight:600;">Rs. {{gst}}</span>
-                </div>
-
-                <div class="d-flex justify-content-between mb-2">
-                    <span style="font-weight:500;">Discount</span>
-                    <span style="font-weight:600;">Rs. {{discount}}</span>
-                </div>
-
-                <div class="d-flex justify-content-between mb-3">
-                    <span style="font-weight:500;">Delivery</span>
-                    <span style="font-weight:600;">Rs. {{delivery}}</span>
-                </div>
-
-                <div style="border-top:2px dashed #ddd; margin:20px 0;"></div>
-
-                <div class="d-flex justify-content-between mb-4">
-                    <span style="font-size:18px; font-weight:700;">Total Payable</span>
-                    <span style="font-size:18px; font-weight:700; color:#8B5E3C;">Rs. {{total_amount}}</span>
-                </div>
-            </div>
-        </div>
     </div>
     {% endblock %}
 </section>

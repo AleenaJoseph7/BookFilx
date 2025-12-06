@@ -207,8 +207,19 @@ def savecheckout(request):
                         Total_amount=total_amount)
 
         ob.save()
-        return redirect(Checkoutpage)
+        return redirect(PaymentPage)
 
+def PaymentPage(request):
+    category = catergorydb.objects.all()
+
+    uname = request.session.get('username')
+    if uname:
+        cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
+
+    return render(request,"PaymentPage.html",
+                  {'category':category,
+                   'cart_count':cart_count
+                   })
 
 def Usersigninpage(request):
     return render(request, "Usersigninpage.html")
