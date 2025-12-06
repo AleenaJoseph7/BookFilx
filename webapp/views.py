@@ -10,7 +10,7 @@ def Homepage(request):
     category = catergorydb.objects.all()
 
     cart_count = 0
-    uname = request.session.get['username']
+    uname = request.session.get('username')
     if uname:
         cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
 
@@ -21,7 +21,7 @@ def Aboutpage(request):
     category = catergorydb.objects.all()
 
     cart_count = 0
-    uname = request.session.get['username']
+    uname = request.session.get('username')
     if uname:
         cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
 
@@ -30,7 +30,7 @@ def Aboutpage(request):
 
 def Contactpage(request):
     cart_count = 0
-    uname = request.session.get['username']
+    uname = request.session.get('username')
     if uname:
         cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
 
@@ -40,7 +40,7 @@ def Contactpage(request):
 
 def Popularpage(request):
     cart_count = 0
-    uname = request.session.get['username']
+    uname = request.session.get('username')
     if uname:
         cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
 
@@ -51,7 +51,7 @@ def Popularpage(request):
 
 def Checkoutpage(request):
     cart_count = 0
-    uname = request.session.get['username']
+    uname = request.session.get('username')
     if uname:
         cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
 
@@ -60,7 +60,7 @@ def Checkoutpage(request):
 
 def Filterbooks(request, category_name):
     cart_count = 0
-    uname = request.session.get['username']
+    uname = request.session.get('username')
     if uname:
         cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
 
@@ -71,7 +71,7 @@ def Filterbooks(request, category_name):
 
 def Singlebook(request, book_id):
     cart_count = 0
-    uname = request.session.get['username']
+    uname = request.session.get('username')
     if uname:
         cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
 
@@ -102,7 +102,7 @@ def Cartpage(request):
     books=bookdb.objects.all()
 
     cart_count=0
-    uname=request.session.get['username']
+    uname = request.session.get('username')
     if uname:
         cart_count=cartdb.objects.filter(Singlebook_username=uname).count()
     return render(request, "Cartpage.html", {'cart': cart,'category':category,'books':books,'cart_count':cart_count})
