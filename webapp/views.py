@@ -151,7 +151,6 @@ def login(request):
 
         if signupdb.objects.filter(Signup_username=signin_username, Signup_password=signin_password).exists():
             request.session['username'] = signin_username
-            request.session['password'] = signin_password
             messages.success(request,"Login Successfull!")
             return redirect(Homepage)
 
@@ -166,6 +165,5 @@ def login(request):
 
 def logout(request):
     del request.session['username']
-    del request.session['password']
     messages.success(request, "Logout Succesfull!")
     return redirect(Usersigninpage)
