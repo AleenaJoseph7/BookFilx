@@ -8,39 +8,76 @@ from django.contrib import messages
 def Homepage(request):
     books = bookdb.objects.all()
     category = catergorydb.objects.all()
-    return render(request, "Homepage.html", {'category': category, 'books': books})
+
+    cart_count = 0
+    uname = request.session.get['username']
+    if uname:
+        cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
+
+    return render(request, "Homepage.html", {'category': category, 'books': books,'cart_count':cart_count})
 
 
 def Aboutpage(request):
     category = catergorydb.objects.all()
-    return render(request, "aboutpage.html", {'category': category})
+
+    cart_count = 0
+    uname = request.session.get['username']
+    if uname:
+        cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
+
+    return render(request, "aboutpage.html", {'category': category,'cart_count':cart_count})
 
 
 def Contactpage(request):
+    cart_count = 0
+    uname = request.session.get['username']
+    if uname:
+        cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
+
     category = catergorydb.objects.all()
-    return render(request, "contact.html", {'category': category})
+    return render(request, "contact.html", {'category': category,'cart_count':cart_count})
 
 
 def Popularpage(request):
+    cart_count = 0
+    uname = request.session.get['username']
+    if uname:
+        cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
+
     books = bookdb.objects.all()
     category = catergorydb.objects.all()
-    return render(request, "popular.html", {'category': category, 'books': books})
+    return render(request, "popular.html", {'category': category, 'books': books,'cart_count':cart_count})
 
 
 def Checkoutpage(request):
+    cart_count = 0
+    uname = request.session.get['username']
+    if uname:
+        cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
+
     category = catergorydb.objects.all()
-    return render(request, "checkoutpage.html", {'category': category})
+    return render(request, "checkoutpage.html", {'category': category,'cart_count':cart_count})
 
 def Filterbooks(request, category_name):
+    cart_count = 0
+    uname = request.session.get['username']
+    if uname:
+        cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
+
     category = catergorydb.objects.all()
     books = bookdb.objects.filter(Book_category=category_name)
-    return render(request, "Filter_books.html", {'category': category, 'books': books, 'category_name': category_name})
+    return render(request, "Filter_books.html", {'category': category, 'books': books, 'category_name': category_name,'cart_count':cart_count})
 
 
 def Singlebook(request, book_id):
+    cart_count = 0
+    uname = request.session.get['username']
+    if uname:
+        cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
+
     category = catergorydb.objects.all()
     books = bookdb.objects.get(id=book_id)
-    return render(request, "singlebook.html", {'books': books, 'category': category})
+    return render(request, "singlebook.html", {'books': books, 'category': category,'cart_count':cart_count})
 
 
 def savecontact(request):
@@ -63,7 +100,12 @@ def Cartpage(request):
     cart = cartdb.objects.filter(Singlebook_username=request.session['username'])
     category=catergorydb.objects.all()
     books=bookdb.objects.all()
-    return render(request, "Cartpage.html", {'cart': cart,'category':category,'books':books})
+
+    cart_count=0
+    uname=request.session.get['username']
+    if uname:
+        cart_count=cartdb.objects.filter(Singlebook_username=uname).count()
+    return render(request, "Cartpage.html", {'cart': cart,'category':category,'books':books,'cart_count':cart_count})
 
 def savecart(request):
     if request.method=='POST':

@@ -62,7 +62,7 @@
                         <!-- Cart -->
                         {% if request.session.username %}
                         <a href="{% url 'Cartpage' %}" class="cart for-buy me-4">
-                            <i class="icon icon-clipboard"></i><span>Cart</span>
+                            <i class="icon icon-clipboard"></i><span>Cart({{cart_count}})</span>
                         </a>
                         {% endif %}
 
