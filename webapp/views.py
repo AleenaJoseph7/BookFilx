@@ -3,6 +3,8 @@ from Myapp.models import catergorydb, bookdb
 from webapp.models import signupdb, contactdb, cartdb, Checkoutdb
 from django.contrib import messages
 
+import razorpay
+
 
 # Create your views here.
 def Homepage(request):
@@ -216,6 +218,12 @@ def PaymentPage(request):
     uname = request.session.get('username')
     if uname:
         cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
+
+    #payment details
+    customer=Checkoutdb.objects.order_by("-id").first()
+    pay=customer.Total_amount
+    amount=int(pay*100)
+    pay_str=str(amount)
 
     return render(request,"PaymentPage.html",
                   {'category':category,
