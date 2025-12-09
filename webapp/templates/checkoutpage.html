@@ -222,9 +222,10 @@
                                    placeholder="Total Amount" required value="{{total_amount}}">
                         </div>
 
-                        <button  type="submit" style=" width:100%;
+                        <button type="submit" style=" width:100%;
               background:#8B5E3C; color:white; border-radius:10px;
-              font-weight:600; height:50px;" class="btn btn-primary">Place Order</button>
+              font-weight:600; height:50px;" class="btn btn-primary">Place Order
+                        </button>
                     </form>
                 </div>
             </div>
@@ -533,21 +534,21 @@
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% if messages %}
-    {% for i in messages %}
-        {% if 'success' in i.tags %}
-            <script> swal('{{i}}', '', 'success'); </script>
+{% for i in messages %}
+{% if 'success' in i.tags %}
+<script> swal('{{i}}', '', 'success'); </script>
 
-        {% elif 'warning' in i.tags %}
-            <script> swal('{{i}}', '', 'warning'); </script>
+{% elif 'warning' in i.tags %}
+<script> swal('{{i}}', '', 'warning'); </script>
 
-        {% elif 'info' in i.tags %}
-            <script> swal('{{i}}', '', 'info'); </script>
+{% elif 'info' in i.tags %}
+<script> swal('{{i}}', '', 'info'); </script>
 
-        {% elif 'error' in i.tags %}
-            <script> swal('{{i}}', '', 'error'); </script>
+{% elif 'error' in i.tags %}
+<script> swal('{{i}}', '', 'error'); </script>
 
-        {% endif %}
-    {% endfor %}
+{% endif %}
+{% endfor %}
 {% endif %}
 
 </body>
