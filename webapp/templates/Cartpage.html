@@ -155,8 +155,8 @@
                     <hr style="border:1.5px solid grey; border-radius:12px; width:500px;">
                 </div>
                 <table class="table table-hover table-light table-bordered">
-                    <thead >
-                    <tr >
+                    <thead>
+                    <tr>
                         <th style="text-align:center;">Book</th>
                         <th style="text-align:center;">Title</th>
                         <th style="text-align:center;">Price</th>
@@ -168,13 +168,13 @@
                     <tbody>
                     {% for i in cart %}
                     <tr style="text-center">
-                        <td class="text-center"><img src="{{i.Singlebook_image.url}}" height="150px" width="150px" >
+                        <td class="text-center"><img src="{{i.Singlebook_image.url}}" height="150px" width="150px">
                         </td>
                         <td style="text-align:center;">{{i.Singlebook_title}}</td>
                         <td style="text-align:center;">Rs. {{i.Singlebook_price}}</td>
                         <td style="text-align:center;">{{i.Singlebook_quantity}}</td>
                         <td style="text-align:center;">Rs. {{i.Singlebook_total}}</td>
-                        <td  style="gap:20px; text-align:center;">
+                        <td style="gap:20px; text-align:center;">
 
                             <a href="{% url 'deletecart' c_id=i.id %}">
                                 <button type="submit" class="btn btn-danger"
@@ -514,21 +514,21 @@
 </style>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% if messages %}
-    {% for i in messages %}
-        {% if 'success' in i.tags %}
-            <script> swal('{{i}}', '', 'success'); </script>
+{% for i in messages %}
+{% if 'success' in i.tags %}
+<script> swal('{{i}}', '', 'success'); </script>
 
-        {% elif 'warning' in i.tags %}
-            <script> swal('{{i}}', '', 'warning'); </script>
+{% elif 'warning' in i.tags %}
+<script> swal('{{i}}', '', 'warning'); </script>
 
-        {% elif 'info' in i.tags %}
-            <script> swal('{{i}}', '', 'info'); </script>
+{% elif 'info' in i.tags %}
+<script> swal('{{i}}', '', 'info'); </script>
 
-        {% elif 'error' in i.tags %}
-            <script> swal('{{i}}', '', 'error'); </script>
+{% elif 'error' in i.tags %}
+<script> swal('{{i}}', '', 'error'); </script>
 
-        {% endif %}
-    {% endfor %}
+{% endif %}
+{% endfor %}
 {% endif %}
 </body>
 
