@@ -234,15 +234,24 @@ def PaymentPage(request):
     pay_str=str(amount)
 
     if request.method=='POST':
-        amount_currency='INR'
         client = razorpay.Client(auth=('rzp_test_0ib0jPwwZ7I1lT', 'VjHNO5zKeKxz8PYe7VnzwxMR'))
-        payment=client.order.create({'amount':amount,'amount_currency':amount_currency})
-
+        payment=client.order.create({'amount':amount,'currency':'INR'})
     return render(request,"PaymentPage.html",
                   {'category':category,
                    'cart_count':cart_count,
                    'pay_str':pay_str,
                    })
+
+def payment_success(request):
+    uname = request.session.get('username')
+
+    if uname:
+        cartdb.objects.filter(Singlebook_username=uname).delete()
+
+    messages.success(request, "Payment successful! Thank you for your purchase.")
+    return redirect('Homepage')
+
+
 
 
 def Usersigninpage(request):
