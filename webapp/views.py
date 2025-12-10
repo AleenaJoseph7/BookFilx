@@ -238,7 +238,7 @@ def PaymentPage(request):
         client = razorpay.Client(auth=('rzp_test_0ib0jPwwZ7I1lT', 'VjHNO5zKeKxz8PYe7VnzwxMR'))
         payment=client.order.create({'amount':amount,'amount_currency':amount_currency})
 
-        return render(request,"PaymentPage.html",
+    return render(request,"PaymentPage.html",
                   {'category':category,
                    'cart_count':cart_count,
                    'pay_str':pay_str,
