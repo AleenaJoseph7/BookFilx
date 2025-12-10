@@ -142,40 +142,9 @@
 
 </div><!--header-wrap-->
 
-<section id="billboard">
-    {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-
-                <button class="prev slick-arrow">
-                    <i class="icon icon-arrow-left"></i>
-                </button>
-
-                <div class="main-slider pattern-overlay">
-                    <div class="slider-item">
-                        <div class="banner-content">
-                            <h2 class="banner-title">Check Out</h2>
-
-                            <div class="btn-wrap">
-                                <a href="{% url 'Cartpage' %}" class="btn btn-outline-accent btn-accent-arrow">
-                                    Go To Cart <i class="icon icon-ns-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div><!-- banner-content -->
-                        <img src="{% static 'web/images/cart.jpg' %}" alt="checkout banner" class="banner-image"
-                             width="350px"
-                             height="400px" style="border-radius:60px; object-fit: cover;">
-                    </div><!-- slider-item -->
-
-
-                </div>
-            </div>
-        </div>
-
-</section>
 
 <section id="checkout" class="py-5">
+    {% block content %}
     <div class="container">
 
         <div class="row g-4">
@@ -275,6 +244,11 @@
             </div>
         </div>
     </div>
+     <div class="btn-wrap" style="text-align:right; margin-right:100px;">
+                                <a href="{% url 'Cartpage' %}" class="btn btn-outline-accent btn-accent-arrow">
+                                    Go To Cart <i class="icon icon-ns-arrow-right"></i>
+                                </a>
+                            </div>
     {% endblock %}
 </section>
 
