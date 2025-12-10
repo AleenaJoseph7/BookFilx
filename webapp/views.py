@@ -211,6 +211,14 @@ def savecheckout(request):
         ob.save()
         messages.success(request,"Checkout Successfully!")
         return redirect(PaymentPage)
+def CheckoutList(request):
+    data = Checkoutdb.objects.all().order_by('-id')
+    return render(request, "checkout_list.html", {'data': data})
+
+
+def DeleteCheckout(request, id):
+    Checkoutdb.objects.filter(id=id).delete()
+    return redirect('CheckoutList')
 
 def PaymentPage(request):
     category = catergorydb.objects.all()
@@ -230,13 +238,12 @@ def PaymentPage(request):
         client = razorpay.Client(auth=('rzp_test_0ib0jPwwZ7I1lT', 'VjHNO5zKeKxz8PYe7VnzwxMR'))
         payment=client.order.create({'amount':amount,'amount_currency':amount_currency})
 
-
-    return render(request,"PaymentPage.html",
+        return render(request,"PaymentPage.html",
                   {'category':category,
                    'cart_count':cart_count,
                    'pay_str':pay_str,
                    })
-    return redirect(Homepage)
+
 
 def Usersigninpage(request):
     return render(request, "Usersigninpage.html")
@@ -309,3 +316,5 @@ def logout(request):
     del request.session['username']
     messages.success(request, "Logout Succesfull!")
     return redirect(Usersigninpage)
+
+

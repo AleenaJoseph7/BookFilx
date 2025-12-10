@@ -16,6 +16,8 @@ urlpatterns = [
 
     path('Checkoutpage/', views.Checkoutpage, name="Checkoutpage"),
     path('savecheckout/', views.savecheckout, name="savecheckout"),
+    path("checkout-list/", views.CheckoutList, name="CheckoutList"),
+    path("delete-checkout/<int:id>/", views.DeleteCheckout, name="DeleteCheckout"),
 
     path('PaymentPage/',views.PaymentPage,name="PaymentPage"),
 
