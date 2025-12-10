@@ -157,11 +157,13 @@
                         <div class="banner-content">
                             <h2 class="banner-title">Payment</h2>
 
-                            <div class="btn-wrap">
-                                <a href="{% url 'Cartpage' %}" class="btn btn-outline-accent btn-accent-arrow">
+                            <form method="Post">
+                                <div class="btn-wrap">
+                                <button class="btn btn-outline-accent btn-accent-arrow">
                                     Proceed To Pay <i class="icon icon-ns-arrow-right"></i>
-                                </a>
+                                </button>
                             </div>
+                            </form>
                         </div><!-- banner-content -->
                         <img src="{% static 'web/images/payment.jpg' %}" alt="checkout banner" class="banner-image"
                              width="350px" style="border-radius:60px; object-fit: cover; height:500px;">
@@ -455,6 +457,22 @@
     {% endfor %}
 {% endif %}
 
+
+<!--Razorpay script-->
+<script src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_test_0ib0jPwwZ7I1lT"
+    data-amount="{{pay_str}}"
+    data-currency="INR"
+    data-order_id="{{payment.order_id}}"
+    data-buttontext=""
+    data-name="GoodHarvest"
+    data-description="Your description"
+    data-image=""
+    data-prefill.name="abc"
+    data-prefill.email="abc@gmail.com"
+    data-theme.color="#002f8c"
+ >
+</script>
 </body>
 
 </html>
