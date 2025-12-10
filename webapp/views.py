@@ -227,7 +227,7 @@ def PaymentPage(request):
 
     if request.method=='POST':
         amount_currency='INR'
-        client=razorpay.Client(auth=('rzp_test_0ib0jPwwZ7I1lT','VjHNO5zKeKxz8PYe7VnzwxMR'))
+        client = razorpay.Client(auth=('rzp_test_0ib0jPwwZ7I1lT', 'VjHNO5zKeKxz8PYe7VnzwxMR'))
         payment=client.order.create({'amount':amount,'amount_currency':amount_currency})
 
 
