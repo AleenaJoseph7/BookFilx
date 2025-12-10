@@ -236,6 +236,7 @@ def PaymentPage(request):
                    'cart_count':cart_count,
                    'pay_str':pay_str,
                    })
+    return redirect(Homepage)
 
 def Usersigninpage(request):
     return render(request, "Usersigninpage.html")

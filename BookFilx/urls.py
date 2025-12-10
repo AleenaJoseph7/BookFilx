@@ -23,7 +23,7 @@ import webapp.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Bookflix_admin/',include(Myapp.urls)),
+    path('',include(Myapp.urls)),
     path('Bookshop/',include(webapp.urls)),
 ]
 urlpatterns+=staticfiles_urlpatterns()
