@@ -225,9 +225,16 @@ def PaymentPage(request):
     amount=int(pay*100)
     pay_str=str(amount)
 
+    if request.method=='POST':
+        amount_currency='INR'
+        client=razorpay.Client(auth=('rzp_test_0ib0jPwwZ7I1lT','VjHNO5zKeKxz8PYe7VnzwxMR'))
+        payment=client.order.create({'amount':amount,'amount_currency':amount_currency})
+
+
     return render(request,"PaymentPage.html",
                   {'category':category,
-                   'cart_count':cart_count
+                   'cart_count':cart_count,
+                   'pay_str':pay_str,
                    })
 
 def Usersigninpage(request):
