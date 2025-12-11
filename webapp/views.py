@@ -211,14 +211,7 @@ def savecheckout(request):
         ob.save()
         messages.success(request,"Checkout Successfully!")
         return redirect(PaymentPage)
-def CheckoutList(request):
-    data = Checkoutdb.objects.all().order_by('-id')
-    return render(request, "checkout_list.html", {'data': data})
 
-
-def DeleteCheckout(request, id):
-    Checkoutdb.objects.filter(id=id).delete()
-    return redirect('CheckoutList')
 
 def PaymentPage(request):
     category = catergorydb.objects.all()

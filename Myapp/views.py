@@ -2,7 +2,7 @@ from os import remove
 
 from django.shortcuts import render, redirect
 from Myapp.models import catergorydb, bookdb
-from webapp.models import contactdb
+from webapp.models import contactdb,Checkoutdb
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import MultiValueDictKeyError
 import datetime
@@ -163,6 +163,15 @@ def deletemessage(request, m_id):
     data.delete()
     messages.warning(request, "Message Deleted Succesfully !")
     return redirect(displaymessage)
+
+def Orderlist(request):
+    data = Checkoutdb.objects.all().order_by('-id')
+    return render(request, "Order.html", {'data': data})
+
+
+def Deleteorder(request, id):
+    Checkoutdb.objects.filter(id=id).delete()
+    return redirect('CheckoutList')
 
 
 def adminloginpage(request):
