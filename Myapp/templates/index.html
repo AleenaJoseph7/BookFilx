@@ -28,13 +28,14 @@
             flex: 1;
         }
 
-        /* Beautiful Card Style */
+        /* Card Styling */
         .dashboard-card {
             border: none;
             border-radius: 14px;
             padding: 25px;
             transition: 0.3s;
             color: #333;
+            background: #fff;
         }
         .dashboard-card:hover {
             transform: translateY(-6px);
@@ -169,7 +170,12 @@
 
                 <div class="navbar-collapse justify-content-end px-3">
 
-                    <!-- Date -->
+                    <!-- VIEW SITE BUTTON -->
+                    <a href="{% url 'Homepage' %}" target="_blank" class="btn btn-primary me-4">
+                        View Site
+                    </a>
+
+                    <!-- DATE -->
                     <span class="me-4 d-flex align-items-center" style="font-size:14px;">
                         <i class="ti ti-calendar"></i>
                         <span class="ms-2">Today: {{date}}</span>
@@ -178,7 +184,8 @@
                     <!-- Welcome Dropdown -->
                     <div class="nav-item dropdown">
                         <a class="nav-link d-flex align-items-center" data-bs-toggle="dropdown" style="cursor:pointer;">
-                            <img src="{% static 'admin/assets/images/profile/user-1.jpg' %}" width="35" height="35" class="rounded-circle">
+                            <img src="{% static 'admin/assets/images/profile/user-1.jpg' %}"
+                                 width="35" height="35" class="rounded-circle">
                             <span class="ms-2 fw-bold" style="font-size:16px;">
                                 {% if request.session.username %}
                                     Welcome, {{request.session.username}}
@@ -201,15 +208,15 @@
             </nav>
         </header>
 
-        <!-- Content -->
-        <div class="container-fluid py-4">
+        <!-- CONTENT -->
+        <div class="container-fluid py-5 mt-5">
 
             {% block content %}
 
             <div class="row">
 
                 <!-- BOOK CARD -->
-                <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-4" >
                     <div class="dashboard-card shadow-sm">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
@@ -290,6 +297,23 @@
 <script src="{% static 'admin/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'admin/assets/js/sidebarmenu.js' %}"></script>
 <script src="{% static 'admin/assets/js/app.min.js' %}"></script>
+
+<!-- SweetAlert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+    {% for i in messages %}
+        {% if 'success' in i.tags %}
+            <script> swal('{{i}}', '', 'success'); </script>
+        {% elif 'warning' in i.tags %}
+            <script> swal('{{i}}', '', 'warning'); </script>
+        {% elif 'info' in i.tags %}
+            <script> swal('{{i}}', '', 'info'); </script>
+        {% elif 'error' in i.tags %}
+            <script> swal('{{i}}', '', 'error'); </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
 
 </body>
 </html>
