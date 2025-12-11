@@ -165,8 +165,9 @@ def deletemessage(request, m_id):
     return redirect(displaymessage)
 
 def Orderlist(request):
+    date=datetime.datetime.now()
     data = Checkoutdb.objects.all().order_by('-id')
-    return render(request, "Order.html", {'data': data})
+    return render(request, "Order.html", {'data': data,'date':date})
 
 
 def Deleteorder(request, id):
