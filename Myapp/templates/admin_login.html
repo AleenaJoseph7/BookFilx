@@ -8,62 +8,62 @@
     <link rel="stylesheet" href="{% static 'loginform/style.css' %}">
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-card">
-            <div class="login-header">
-                <h2>Welcome Back</h2>
-                <p>Sign in to your account</p>
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <h2>Welcome Back</h2>
+            <p>Sign in to your account</p>
+        </div>
+
+        <form class="login-form" action="{% url 'adminlogin' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <input type="text" name="username">
+                    <label>Username</label>
+                    <span class="focus-border"></span>
+                </div>
             </div>
 
-            <form class="login-form"  action="{% url 'adminlogin' %}" method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                    <div class="input-wrapper">
-                        <input type="text" name="username">
-                        <label >Username</label>
-                        <span class="focus-border"></span>
-                    </div>
+            <div class="form-group">
+                <div class="input-wrapper password-wrapper">
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                    <label for="password">Password</label>
+                    <button type="button" class="password-toggle" id="passwordToggle"
+                            aria-label="Toggle password visibility">
+                        <span class="eye-icon"></span>
+                    </button>
+                    <span class="focus-border"></span>
                 </div>
 
-                <div class="form-group">
-                    <div class="input-wrapper password-wrapper">
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
-                        <label for="password">Password</label>
-                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
-                            <span class="eye-icon"></span>
-                        </button>
-                        <span class="focus-border"></span>
-                    </div>
+            </div>
 
-                </div>
-
-                <button type="submit" class="login-btn btn">
-                    <span class="btn-text">Login</span>
-                    <span class="btn-loader"></span>
-                </button>
-            </form>
+            <button type="submit" class="login-btn btn">
+                <span class="btn-text">Login</span>
+                <span class="btn-loader"></span>
+            </button>
+        </form>
 
 
-
-        </div>
     </div>
+</div>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% if messages %}
-    {% for i in messages %}
-        {% if 'success' in i.tags %}
-            <script> swal('{{i}}', '', 'success'); </script>
+{% for i in messages %}
+{% if 'success' in i.tags %}
+<script> swal('{{i}}', '', 'success'); </script>
 
-        {% elif 'warning' in i.tags %}
-            <script> swal('{{i}}', '', 'warning'); </script>
+{% elif 'warning' in i.tags %}
+<script> swal('{{i}}', '', 'warning'); </script>
 
-        {% elif 'info' in i.tags %}
-            <script> swal('{{i}}', '', 'info'); </script>
+{% elif 'info' in i.tags %}
+<script> swal('{{i}}', '', 'info'); </script>
 
-        {% elif 'error' in i.tags %}
-            <script> swal('{{i}}', '', 'error'); </script>
+{% elif 'error' in i.tags %}
+<script> swal('{{i}}', '', 'error'); </script>
 
-        {% endif %}
-    {% endfor %}
+{% endif %}
+{% endfor %}
 {% endif %}
 
 </body>

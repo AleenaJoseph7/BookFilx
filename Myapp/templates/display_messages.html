@@ -9,60 +9,60 @@
 </head>
 
 <body>
-      <div class="card mb-5 mt-5" style="height:auto; width:auto; margin:auto;border:1px solid lightgrey;">
-        <div class="card-body ">
-            <h1 class="text-center mb-5" style="color:darkblue; font-size:35px; font-weight:bold; font-family:Arial;">
-                Book Data</h1>
+<div class="card mb-5 mt-5" style="height:auto; width:auto; margin:auto;border:1px solid lightgrey;">
+    <div class="card-body ">
+        <h1 class="text-center mb-5" style="color:darkblue; font-size:35px; font-weight:bold; font-family:Arial;">
+            Book Data</h1>
 
-                <table class="table table-bordered table-hover table-dark">
-                    <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Subject</th>
-                        <th>Message</th>
-                        <th>Option</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for i in data %}
+        <table class="table table-bordered table-hover table-dark">
+            <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Option</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in data %}
 
-                    <tr>
-                        <td>{{i.Contact_fullname}}</td>
-                        <td>{{i.Contact_email}}</td>
-                        <td>{{i.Contact_subject}}</td>
-                        <td>{{i.Contact_message}}</td>
-                        <td>
-                             <a href="{% url 'deletemessage' m_id=i.id %}">
-                                <button type="submit" class="btn btn-outline-danger">DELETE</button>
-                            </a>
-                        </td>
-                    </tr>
+            <tr>
+                <td>{{i.Contact_fullname}}</td>
+                <td>{{i.Contact_email}}</td>
+                <td>{{i.Contact_subject}}</td>
+                <td>{{i.Contact_message}}</td>
+                <td>
+                    <a href="{% url 'deletemessage' m_id=i.id %}">
+                        <button type="submit" class="btn btn-outline-danger">DELETE</button>
+                    </a>
+                </td>
+            </tr>
 
-                    {% endfor %}
-                    </tbody>
-                </table>
-        </div>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
+</div>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 {% if messages %}
-    {% for i in messages %}
-        {% if 'success' in i.tags %}
-            <script> swal('{{i}}', '', 'success'); </script>
+{% for i in messages %}
+{% if 'success' in i.tags %}
+<script> swal('{{i}}', '', 'success'); </script>
 
-        {% elif 'warning' in i.tags %}
-            <script> swal('{{i}}', '', 'warning'); </script>
+{% elif 'warning' in i.tags %}
+<script> swal('{{i}}', '', 'warning'); </script>
 
-        {% elif 'info' in i.tags %}
-            <script> swal('{{i}}', '', 'info'); </script>
+{% elif 'info' in i.tags %}
+<script> swal('{{i}}', '', 'info'); </script>
 
-        {% elif 'error' in i.tags %}
-            <script> swal('{{i}}', '', 'error'); </script>
+{% elif 'error' in i.tags %}
+<script> swal('{{i}}', '', 'error'); </script>
 
-        {% endif %}
-    {% endfor %}
+{% endif %}
+{% endfor %}
 {% endif %}
 
 </body>

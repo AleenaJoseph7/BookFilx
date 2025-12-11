@@ -9,54 +9,54 @@
 </head>
 
 <body>
-        <div class="card mb-5 mt-5" style="height:auto; width:auto; margin:auto; border:1px solid lightgrey;">
-        <div class="card-body ">
-            <h1 class="text-center mb-5" style="color:darkblue; font-size:35px; font-weight:bold; font-family:Arial;">
-                Catergory Updation</h1>
-            <form action="{% url 'updatecatergory' c_id=catergory.id %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
+<div class="card mb-5 mt-5" style="height:auto; width:auto; margin:auto; border:1px solid lightgrey;">
+    <div class="card-body ">
+        <h1 class="text-center mb-5" style="color:darkblue; font-size:35px; font-weight:bold; font-family:Arial;">
+            Catergory Updation</h1>
+        <form action="{% url 'updatecatergory' c_id=catergory.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-                <div class="mb-3">
-                    <label class="form-label">Category Name :</label>
-                    <input type="text" class="form-control" placeholder="Catergory Name" name="catergory_name"
-                        value="{{catergory.Catergory_name}}">
-                </div>
+            <div class="mb-3">
+                <label class="form-label">Category Name :</label>
+                <input type="text" class="form-control" placeholder="Catergory Name" name="catergory_name"
+                       value="{{catergory.Catergory_name}}">
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Descritpion :</label>
-                    <textarea placeholder="Description" name="catergory_description" class="form-control">{{catergory.Catergory_description}}</textarea>
-                </div>
+            <div class="mb-3">
+                <label class="form-label">Descritpion :</label>
+                <textarea placeholder="Description" name="catergory_description" class="form-control">{{catergory.Catergory_description}}</textarea>
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Cover Image :</label>
-                    <img src="{{catergory.Catergory_cover.url}}" height="150px" width="150px" class="mb-3">
-                    <input type="file" class="form-control" placeholder="Cover Image" name="catergory_cover">
-                </div>
+            <div class="mb-3">
+                <label class="form-label">Cover Image :</label>
+                <img src="{{catergory.Catergory_cover.url}}" height="150px" width="150px" class="mb-3">
+                <input type="file" class="form-control" placeholder="Cover Image" name="catergory_cover">
+            </div>
 
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary mb-3 mt-3" style="width:250px;">Update</button>
-                </div>
-            </form>
-        </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mb-3 mt-3" style="width:250px;">Update</button>
+            </div>
+        </form>
     </div>
+</div>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% if messages %}
-    {% for i in messages %}
-        {% if 'success' in i.tags %}
-            <script> swal('{{i}}', '', 'success'); </script>
+{% for i in messages %}
+{% if 'success' in i.tags %}
+<script> swal('{{i}}', '', 'success'); </script>
 
-        {% elif 'warning' in i.tags %}
-            <script> swal('{{i}}', '', 'warning'); </script>
+{% elif 'warning' in i.tags %}
+<script> swal('{{i}}', '', 'warning'); </script>
 
-        {% elif 'info' in i.tags %}
-            <script> swal('{{i}}', '', 'info'); </script>
+{% elif 'info' in i.tags %}
+<script> swal('{{i}}', '', 'info'); </script>
 
-        {% elif 'error' in i.tags %}
-            <script> swal('{{i}}', '', 'error'); </script>
+{% elif 'error' in i.tags %}
+<script> swal('{{i}}', '', 'error'); </script>
 
-        {% endif %}
-    {% endfor %}
+{% endif %}
+{% endfor %}
 {% endif %}
 
 </body>
