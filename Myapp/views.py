@@ -17,10 +17,12 @@ def index(request):
     mcount = contactdb.objects.count()
     date = datetime.datetime.now()
     book_count = bookdb.objects.count()
+    order_count=Checkoutdb.objects.count()
     category_count = catergorydb.objects.count()
     return render(request, "index.html", {'book_count': book_count,
                                           'category_count': category_count,
-                                          'date': date, 'mcount': mcount})
+                                          'date': date, 'mcount': mcount,
+                                          'order_count':order_count})
 
 
 def addcatergory(request):
