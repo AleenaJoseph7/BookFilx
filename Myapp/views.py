@@ -1,7 +1,7 @@
 from os import remove
 
 from django.shortcuts import render, redirect
-from Myapp.models import catergorydb, bookdb
+from Myapp.models import *
 from webapp.models import contactdb,Checkoutdb
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import MultiValueDictKeyError
