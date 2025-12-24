@@ -262,24 +262,57 @@
     </div>
 </section>
 
-<section id="subscribe" class="py-5 bg-light">
+<section id="subscribe" style="background:#EDEBE4; padding:80px 0;">
     <div class="container">
-        <div class="row justify-content-center align-items-center">
+        <div class="row align-items-center">
 
-            <!-- Title -->
-            <div class="col-md-6 mb-3 mb-md-0">
-                <h2 class="section-title divider">Subscribe to our newsletter</h2>
-                <p class="text-muted">Stay updated with the latest books, offers, and recommendations from BookFlix.</p>
+            <!-- Text -->
+            <div class="col-md-6">
+                <h2 style="
+                    font-size:36px;
+                    font-weight:500;
+                    margin-bottom:12px;
+                ">
+                    Subscribe to our newsletter
+                </h2>
+
+                <p style="
+                    font-size:15px;
+                    color:#777;
+                    margin:0;
+                ">
+                    Stay updated with the latest books, offers, and recommendations from BookFlix.
+                </p>
             </div>
 
             <!-- Form -->
             <div class="col-md-6">
-                <form id="subscribeForm" class="d-flex">
-                    <input type="email" name="email" class="form-control me-2" placeholder="Enter your email address"
-                           required>
-                    <button class="btn btn-primary d-flex align-items-center">
-                        <span>Subscribe</span>
-                        <i class="bi bi-send ms-2"></i>
+                <form style="
+                    display:flex;
+                    align-items:center;
+                    gap:12px;
+                ">
+                    <input type="email"
+                           placeholder="Enter your email address"
+                           required
+                           class="form-control"
+                           style="
+                               height:52px;
+                               border-radius:6px;
+                           ">
+
+                    <button type="submit"
+                            style="
+                                height:52px;
+                                padding:0 28px;
+                                background:#c5a992;
+                                border:none;
+                                border-radius:6px;
+                                color:#fff;
+                                font-weight:500;
+                                margin-top:0;
+                            ">
+                        Subscribe
                     </button>
                 </form>
             </div>
@@ -288,7 +321,6 @@
     </div>
     {% endblock %}
 </section>
-
 <footer id="footer">
     <div class="container">
         <div class="row">
