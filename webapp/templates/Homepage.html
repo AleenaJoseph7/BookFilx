@@ -337,23 +337,58 @@
     </div>
 </section>
 
-<section id="subscribe" class="subscribe-section">
+<section id="subscribe" style="background:#EDEBE4; padding:80px 0;">
     <div class="container">
         <div class="row align-items-center">
 
             <!-- Text -->
-            <div class="col-md-6 subscribe-text">
-                <h2 class="subscribe-title">Subscribe to our newsletter</h2>
-                <p class="subscribe-desc">
+            <div class="col-md-6">
+                <h2 style="
+                    font-size:36px;
+                    font-weight:500;
+                    margin-bottom:12px;
+                ">
+                    Subscribe to our newsletter
+                </h2>
+
+                <p style="
+                    font-size:15px;
+                    color:#777;
+                    margin:0;
+                ">
                     Stay updated with the latest books, offers, and recommendations from BookFlix.
                 </p>
             </div>
 
             <!-- Form -->
             <div class="col-md-6">
-                <form class="subscribe-form">
-                    <input type="email" class="form-control" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn subscribe-btn">Subscribe</button>
+                <form style="
+                    display:flex;
+                    align-items:center;
+                    gap:12px;
+                ">
+                    <input type="email"
+                           placeholder="Enter your email address"
+                           required
+                           class="form-control"
+                           style="
+                               height:52px;
+                               border-radius:6px;
+                           ">
+
+                    <button type="submit"
+                            style="
+                                height:52px;
+                                padding:0 28px;
+                                background:#c5a992;
+                                border:none;
+                                border-radius:6px;
+                                color:#fff;
+                                font-weight:500;
+                                margin-top:0;
+                            ">
+                        Subscribe
+                    </button>
                 </form>
             </div>
 
@@ -361,6 +396,7 @@
     </div>
     {% endblock %}
 </section>
+
 
 
 
