@@ -2136,6 +2136,48 @@ span.prev-price {
   /* Internet Explorer 10+ */
 }
 
+.subscribe-section {
+    background: #f8f8f5;
+    padding: 70px 0;
+}
+
+.subscribe-title {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.subscribe-desc {
+    font-size: 15px;
+    color: #666;
+    margin: 0;
+}
+
+.subscribe-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.subscribe-form input {
+    height: 52px;
+    border-radius: 6px;
+}
+
+.subscribe-btn {
+    height: 52px;
+    padding: 0 28px;
+    background: #c8ab8f;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+.subscribe-btn:hover {
+    background: #b99778;
+}
+
 
 @media screen and (max-width: 1200px) {
   #subscribe form#form {
