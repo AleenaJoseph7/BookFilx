@@ -113,11 +113,13 @@
                                     <a href="{% url 'Aboutpage' %}">About Us</a>
                                 </li>
 
-                                <li class="menu-item has-sub {% if request.resolver_match.url_name == 'Filterbooks' %}active{% endif %}">
+                                <li class="menu-item has-sub
+{% if request.resolver_match.url_name == 'Filterbooks' %}active{% endif %}">
                                     <a href="#">Category</a>
+
                                     <ul>
                                         {% for i in category %}
-                                        <li class="{% if i.Catergory_name == category_name %}active{% endif %}">
+                                        <li class="{% if request.resolver_match.kwargs.category_name == i.Catergory_name %}active{% endif %}">
                                             <a href="{% url 'Filterbooks' category_name=i.Catergory_name %}">
                                                 {{ i.Catergory_name }}
                                             </a>
