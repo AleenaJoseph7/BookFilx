@@ -107,11 +107,12 @@ p {
 /* =====================================================
    6. CATEGORY DROPDOWN
 ===================================================== */
+/* Parent */
 .menu-item.has-sub {
   position: relative;
 }
 
-/* Dropdown container */
+/* Dropdown box */
 .menu-item.has-sub ul {
   position: absolute;
   top: 100%;
@@ -127,8 +128,8 @@ p {
   display: block;
 }
 
-/* Default dropdown items */
-#header .stellarnav ul ul li a {
+/* Reset dropdown links */
+.menu-item.has-sub ul li a {
   color: #111;
   font-weight: 400;
   padding: 8px 20px;
@@ -136,20 +137,21 @@ p {
 }
 
 /* Hover */
-#header .stellarnav ul ul li a:hover {
+.menu-item.has-sub ul li a:hover {
   color: var(--accent-color);
 }
 
-/* ACTIVE category ONLY */
-#header .stellarnav ul ul li.active > a {
+/* ACTIVE CATEGORY ONLY */
+.menu-item.has-sub ul li.active > a {
   color: var(--accent-color);
   font-weight: 600;
 }
 
-/* Parent CATEGORY highlight */
-#header .stellarnav ul > li.has-sub.active > a {
+/* Parent Category highlight */
+.menu-item.has-sub.active > a {
   color: var(--accent-color);
 }
+
 
 /* =====================================================
    7. BUTTONS

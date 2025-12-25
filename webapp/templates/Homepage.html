@@ -113,8 +113,8 @@
                                     <a href="{% url 'Aboutpage' %}">About Us</a>
                                 </li>
 
-                                <li class="menu-item has-sub
-{% if request.resolver_match.url_name == 'Filterbooks' %}active{% endif %}">
+                                <li class="menu-item has-sub {% if category_name %}active{% endif %}">
+
                                     <a href="#">Category</a>
 
                                     <ul>
