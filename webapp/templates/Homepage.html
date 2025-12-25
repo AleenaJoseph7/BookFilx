@@ -104,28 +104,38 @@
                     <nav id="navbar">
                         <div class="main-menu stellarnav">
                             <ul class="menu-list">
-                                <li class="menu-item active">
+
+                                <li class="menu-item {% if request.resolver_match.url_name == 'Homepage' %}active{% endif %}">
                                     <a href="{% url 'Homepage' %}">Home</a>
                                 </li>
-                                <li class="menu-item "><a href="{% url 'Aboutpage' %}">About Us</a></li>
-                                <li class="menu-item has-sub">
-                                    <a href="#pages" class="nav-link">Category</a>
+
+                                <li class="menu-item {% if request.resolver_match.url_name == 'Aboutpage' %}active{% endif %}">
+                                    <a href="{% url 'Aboutpage' %}">About Us</a>
+                                </li>
+
+                                <li class="menu-item has-sub {% if request.resolver_match.url_name == 'Filterbooks' %}active{% endif %}">
+                                    <a href="#">Category</a>
                                     <ul>
                                         {% for i in category %}
-                                        <li class="{% if i.Catergory_name == category_name %}active{% endif %}"><a
-                                                href="{% url 'Filterbooks' category_name=i.Catergory_name %}">{{i.Catergory_name}}</a>
+                                        <li class="{% if i.Catergory_name == category_name %}active{% endif %}">
+                                            <a href="{% url 'Filterbooks' category_name=i.Catergory_name %}">
+                                                {{ i.Catergory_name }}
+                                            </a>
                                         </li>
                                         {% endfor %}
                                     </ul>
                                 </li>
-                                <!--                                    <li class="menu-item"><a href="#featured-books" class="nav-link">Featured</a></li>-->
-                                <li class="menu-item"><a href="{% url 'Popularpage' %}" class="nav-link">Popular</a>
+
+                                <li class="menu-item {% if request.resolver_match.url_name == 'Popularpage' %}active{% endif %}">
+                                    <a href="{% url 'Popularpage' %}">Popular</a>
                                 </li>
-                                <li class="menu-item"><a href="{% url 'Contactpage' %}" class="nav-link">Contact</a>
+
+                                <li class="menu-item {% if request.resolver_match.url_name == 'Contactpage' %}active{% endif %}">
+                                    <a href="{% url 'Contactpage' %}">Contact</a>
                                 </li>
-                                <!--                                    <li class="menu-item"><a href="#latest-blog" class="nav-link">Articles</a></li>-->
-                                <!--                                    <li class="menu-item"><a href="#download-app" class="nav-link">Download App</a></li>-->
+
                             </ul>
+
 
                             <div class="hamburger">
                                 <span class="bar"></span>
@@ -396,8 +406,6 @@
     </div>
     {% endblock %}
 </section>
-
-
 
 
 <footer id="footer">
