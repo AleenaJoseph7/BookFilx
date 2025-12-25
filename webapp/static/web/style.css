@@ -1,7 +1,6 @@
-
-/* =====================================================
-   1. ROOT VARIABLES
-===================================================== */
+/* =========================
+   ROOT VARIABLES
+========================= */
 :root {
   --accent-color: #C5A992;
   --dark-color: #2f2f2f;
@@ -12,9 +11,9 @@
   --heading-font: "Prata", Georgia, serif;
 }
 
-/* =====================================================
-   2. RESET & BASE
-===================================================== */
+/* =========================
+   RESET & BASE
+========================= */
 *,
 *::before,
 *::after {
@@ -41,22 +40,9 @@ ul {
   margin: 0;
 }
 
-/* =====================================================
-   3. LINKS (NO GLOBAL POISONING)
-===================================================== */
-body a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-body a:hover {
-  color: #111;
-}
-
-/* =====================================================
-   4. TYPOGRAPHY
-===================================================== */
+/* =========================
+   TYPOGRAPHY
+========================= */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font);
   color: var(--dark-color);
@@ -67,9 +53,9 @@ p {
   margin-bottom: 20px;
 }
 
-/* =====================================================
-   5. HEADER & NAVIGATION
-===================================================== */
+/* =========================
+   HEADER & NAVIGATION
+========================= */
 #header-wrap {
   background: #f3f2ec;
 }
@@ -84,35 +70,27 @@ p {
   border-bottom: 1px solid #e0e0e0;
 }
 
-/* MAIN MENU */
 .menu-list {
   display: flex;
   align-items: center;
   gap: 40px;
 }
 
-/* TOP LEVEL LINKS */
-#header .menu-list > .menu-item > a {
+.menu-item > a {
   color: #111;
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 0.12em;
+  text-decoration: none;
 }
 
-/* ACTIVE TOP MENU */
-#header .menu-item.active > a {
-  color: var(--accent-color);
-}
-
-/* =====================================================
-   6. CATEGORY DROPDOWN
-===================================================== */
-/* Parent */
+/* =========================
+   CATEGORY DROPDOWN
+========================= */
 .menu-item.has-sub {
   position: relative;
 }
 
-/* Dropdown box */
 .menu-item.has-sub ul {
   position: absolute;
   top: 100%;
@@ -128,34 +106,20 @@ p {
   display: block;
 }
 
-/* Reset dropdown links */
 .menu-item.has-sub ul li a {
   color: #111;
-  font-weight: 400;
   padding: 8px 20px;
   display: block;
+  text-decoration: none;
 }
 
-/* Hover */
 .menu-item.has-sub ul li a:hover {
   color: var(--accent-color);
 }
 
-/* ACTIVE CATEGORY ONLY */
-.menu-item.has-sub ul li.active > a {
-  color: var(--accent-color);
-  font-weight: 600;
-}
-
-/* Parent Category highlight */
-.menu-item.has-sub.active > a {
-  color: var(--accent-color);
-}
-
-
-/* =====================================================
-   7. BUTTONS
-===================================================== */
+/* =========================
+   BUTTONS
+========================= */
 .btn {
   background: var(--accent-color);
   color: #fff;
@@ -181,9 +145,9 @@ p {
   color: #fff;
 }
 
-/* =====================================================
-   8. SECTIONS
-===================================================== */
+/* =========================
+   SECTIONS
+========================= */
 .section-title {
   font-size: 3em;
   text-align: center;
@@ -199,9 +163,9 @@ p {
   margin: 15px auto 0;
 }
 
-/* =====================================================
-   9. PRODUCTS
-===================================================== */
+/* =========================
+   PRODUCTS
+========================= */
 .product-style img.product-item {
   background: #efeee8;
   border: 1px solid #eae8df;
@@ -218,9 +182,9 @@ p {
   color: #74642F;
 }
 
-/* =====================================================
-   10. FOOTER
-===================================================== */
+/* =========================
+   FOOTER
+========================= */
 #footer {
   margin-top: 100px;
   padding-bottom: 80px;
@@ -233,6 +197,7 @@ p {
 
 .footer-menu a {
   color: var(--dark-color);
+  text-decoration: none;
 }
 
 #footer-bottom {
