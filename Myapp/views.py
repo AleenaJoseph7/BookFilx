@@ -97,9 +97,32 @@ def savebook(request):
         book_description = request.POST.get('book_description')
         book_cover = request.FILES.get('book_cover')
 
-        book_title_regex=r'^[A-Za-z-.\s]+$';
-        if not re.match(book_title_regex,book_title):
-            messages.warning(request,"Plaese enter a valid Book Title")
+        # ================= BOOK TITLE VALIDATION =================
+        book_title_regex = r'^[A-Za-z\s.-]+$'
+        if not re.match(book_title_regex, book_title):
+            messages.warning(request, "Please enter a valid Book Title")
+            return redirect('addbook')
+
+        # ================= AUTHOR VALIDATION =================
+        author_regex = r'^[A-Z][a-z]+(\s([A-Z][a-z]+|[A-Z](\.[A-Z])?\.?))*$'
+        if not re.match(author_regex, book_author):
+            messages.warning(request, "Please enter a valid Author Name")
+            return redirect('addbook')
+
+        # ================= PRICE VALIDATION =================
+        if not book_price.isdigit():
+            messages.warning(request, "Price must be a number")
+            return redirect('addbook')
+
+        # ================= PUBLISHER VALIDATION =================
+        if not re.match(r'^[A-Za-z\s]+$', book_publisher):
+            messages.warning(request, "Please enter a valid Publisher name")
+            return redirect('addbook')
+
+        # ================= DESCRIPTION VALIDATION =================
+        if not re.match(r'^[A-Za-z0-9\s]+$', book_description):
+            messages.warning(request, "Description should not contain special characters")
+            return redirect('addbook')
 
         ob = bookdb(Book_title=book_title,
                     Book_author=book_author,

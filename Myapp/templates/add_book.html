@@ -53,7 +53,8 @@
                 <label class="form-label">Price :</label>
                 <input type="text" class="form-control"
                        placeholder="Price"
-                       name="book_price" onkeyup="Validationbookprice()">
+                       name="book_price"
+                       onkeyup="Validationbookprice()">
                 <small class="text-danger" id="err_bookprice"></small>
             </div>
 
@@ -62,7 +63,8 @@
                 <label class="form-label">Publisher :</label>
                 <input type="text" class="form-control"
                        placeholder="Publisher"
-                       name="book_publisher" onkeyup="Validationpublisher()">
+                       name="book_publisher"
+                       onkeyup="Validationpublisher()">
                 <small class="text-danger" id="err_bookpublisher"></small>
             </div>
 
@@ -71,12 +73,12 @@
                 <label class="form-label">Description :</label>
                 <textarea class="form-control"
                           placeholder="Description"
-                          name="book_description" onkeyup="Validationdescription()"></textarea>
-
+                          name="book_description"
+                          onkeyup="Validationdescription()"></textarea>
                 <small class="text-danger" id="err_bookdesc"></small>
             </div>
 
-            <!-- COVER -->
+            <!-- COVER IMAGE -->
             <div class="mb-3">
                 <label class="form-label">Cover Image :</label>
                 <input type="file" class="form-control"
@@ -99,8 +101,11 @@
 <script>
 document.addEventListener('DOMContentLoaded',function(){
 
-    const err_booktitle  = document.getElementById('err_booktitle');
-    const err_bookauthor = document.getElementById('err_bookauthor');
+    const err_booktitle     = document.getElementById('err_booktitle');
+    const err_bookauthor    = document.getElementById('err_bookauthor');
+    const err_bookprice     = document.getElementById('err_bookprice');
+    const err_bookpublisher = document.getElementById('err_bookpublisher');
+    const err_bookdesc      = document.getElementById('err_bookdesc');
 
     /* BOOK TITLE */
     window.Validationbooktitle=function(){
@@ -118,33 +123,33 @@ document.addEventListener('DOMContentLoaded',function(){
 
     /* PRICE */
     window.Validationbookprice=function(){
-         err_bookprice.innerHTML = /^[0-9]+$/.test(myform.book_price.value.trim());
+        err_bookprice.innerHTML =
+        /^[0-9]+$/.test(myform.book_price.value.trim())
+        ? "" : "Price must contain numbers only";
     }
 
     /* PUBLISHER */
     window.Validationpublisher=function(){
-         err_bookpublisher.innerHTML=/^[A-Za-z\s]+$/.test(myform.book_publisher.value.trim());
+        err_bookpublisher.innerHTML =
+        /^[A-Za-z\s]+$/.test(myform.book_publisher.value.trim())
+        ? "" : "Publisher name must contain letters only";
     }
 
     /* DESCRIPTION */
     window.Validationdescription=function(){
-        return /^[A-Za-z0-9\s]+$/.test(myform.book_description.value.trim());
+        err_bookdesc.innerHTML =
+        /^[A-Za-z0-9\s]+$/.test(myform.book_description.value.trim())
+        ? "" : "No special characters allowed";
     }
 
-    /* FINAL CHECK */
+    /* FINAL FORM VALIDATION */
     window.Validations=function(){
 
         Validationbooktitle();
         Validationbookauthor();
-
-        if(
-            !Validationbookprice() ||
-            !Validationpublisher() ||
-            !Validationdescription()
-        ){
-            alert("Please correct invalid fields");
-            return false;
-        }
+        Validationbookprice();
+        Validationpublisher();
+        Validationdescription();
 
         return document.querySelectorAll('.text-danger:not(:empty)').length === 0;
     }
@@ -154,7 +159,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<!-- ================= DJANGO MESSAGES ================= -->
 {% if messages %}
 {% for i in messages %}
 {% if 'success' in i.tags %}
