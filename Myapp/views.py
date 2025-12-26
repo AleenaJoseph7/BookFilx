@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 
 from django.contrib import messages
-
+import re
 
 # Create your views here.
 def index(request):
@@ -96,6 +96,10 @@ def savebook(request):
         book_publisher = request.POST.get('book_publisher')
         book_description = request.POST.get('book_description')
         book_cover = request.FILES.get('book_cover')
+
+        book_title_regex=r'^[A-Za-z-.\s]+$';
+        if not re.match(book_title_regex,book_title):
+            messages.warning(request,"Plaese enter a valid Book Title")
 
         ob = bookdb(Book_title=book_title,
                     Book_author=book_author,
