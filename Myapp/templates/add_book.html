@@ -53,7 +53,8 @@
                 <label class="form-label">Price :</label>
                 <input type="text" class="form-control"
                        placeholder="Price"
-                       name="book_price">
+                       name="book_price" onkeyup="Validationbookprice()">
+                <small class="text-danger" id="err_bookprice"></small>
             </div>
 
             <!-- PUBLISHER -->
@@ -61,7 +62,8 @@
                 <label class="form-label">Publisher :</label>
                 <input type="text" class="form-control"
                        placeholder="Publisher"
-                       name="book_publisher">
+                       name="book_publisher" onkeyup="Validationpublisher()">
+                <small class="text-danger" id="err_bookpublisher"></small>
             </div>
 
             <!-- DESCRIPTION -->
@@ -69,7 +71,9 @@
                 <label class="form-label">Description :</label>
                 <textarea class="form-control"
                           placeholder="Description"
-                          name="book_description"></textarea>
+                          name="book_description" onkeyup="Validationdescription()"></textarea>
+
+                <small class="text-danger" id="err_bookdesc"></small>
             </div>
 
             <!-- COVER -->
@@ -114,12 +118,12 @@ document.addEventListener('DOMContentLoaded',function(){
 
     /* PRICE */
     window.Validationbookprice=function(){
-        return /^[0-9]+$/.test(myform.book_price.value.trim());
+         err_bookprice.innerHTML = /^[0-9]+$/.test(myform.book_price.value.trim());
     }
 
     /* PUBLISHER */
     window.Validationpublisher=function(){
-        return /^[A-Za-z\s]+$/.test(myform.book_publisher.value.trim());
+         err_bookpublisher.innerHTML=/^[A-Za-z\s]+$/.test(myform.book_publisher.value.trim());
     }
 
     /* DESCRIPTION */
