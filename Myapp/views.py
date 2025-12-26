@@ -174,7 +174,7 @@ def Orderlist(request):
 
 def Deleteorder(request, id):
     Checkoutdb.objects.filter(id=id).delete()
-    return redirect('CheckoutList')
+    return redirect(Orderlist)
 
 
 def adminloginpage(request):
