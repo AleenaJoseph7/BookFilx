@@ -2,93 +2,165 @@
 {% block content %}
 
 <div class="card mb-5 mt-5"
-     style="height:auto; width:auto; margin:auto; border:1px solid lightgrey; background: rgba(255,255,255,0.15);backdrop-filter: blur(10px);">
+     style="height:auto; width:auto; margin:auto; border:1px solid lightgrey;
+     background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);">
     <div class="card-body">
-        <h1 class="text-center mb-5" style="color:darkblue; font-size:35px; font-weight:bold; font-family:Arial;">
+
+        <h1 class="text-center mb-5"
+            style="color:darkblue; font-size:35px; font-weight:bold; font-family:Arial;">
             Book Registration
         </h1>
-        <form action="{% url 'savebook' %}" method="post" enctype="multipart/form-data" name="myform" onsubmit="Validations()">
+
+        <form action="{% url 'savebook' %}" method="post"
+              enctype="multipart/form-data"
+              name="myform"
+              onsubmit="return Validations()">
             {% csrf_token %}
 
+            <!-- BOOK TITLE -->
             <div class="mb-3">
                 <label class="form-label">Book Title :</label>
-                <input type="text" class="form-control" placeholder="Book Title" name="book_title" onkeyup="Validationbooktitle()">
+                <input type="text" class="form-control"
+                       placeholder="Book Title"
+                       name="book_title"
+                       onkeyup="Validationbooktitle()">
                 <small class="text-danger" id="err_booktitle"></small>
             </div>
 
+            <!-- AUTHOR -->
             <div class="mb-3">
                 <label class="form-label">Author :</label>
-                <input type="text" class="form-control" placeholder="Author" name="book_author">
+                <input type="text" class="form-control"
+                       placeholder="Author"
+                       name="book_author"
+                       onkeyup="Validationbookauthor()">
+                <small class="text-danger" id="err_bookauthor"></small>
             </div>
 
+            <!-- CATEGORY -->
             <div class="mb-3">
                 <label class="form-label">Category :</label>
                 <select class="form-control" name="book_category" required>
-                    <option>Select Book Category</option>
+                    <option value="">Select Book Category</option>
                     {% for i in category %}
-                    <option>{{i.Catergory_name}}</option>
+                    <option>{{ i.Catergory_name }}</option>
                     {% endfor %}
                 </select>
             </div>
 
+            <!-- PRICE -->
             <div class="mb-3">
                 <label class="form-label">Price :</label>
-                <input type="text" class="form-control" placeholder="Price" name="book_price">
+                <input type="text" class="form-control"
+                       placeholder="Price"
+                       name="book_price">
             </div>
 
+            <!-- PUBLISHER -->
             <div class="mb-3">
                 <label class="form-label">Publisher :</label>
-                <input type="text" class="form-control" placeholder="Publisher" name="book_publisher">
+                <input type="text" class="form-control"
+                       placeholder="Publisher"
+                       name="book_publisher">
             </div>
 
+            <!-- DESCRIPTION -->
             <div class="mb-3">
-                <label class="form-label">Description:</label>
-                <textarea placeholder="Description" class="form-control" name="book_description"></textarea>
+                <label class="form-label">Description :</label>
+                <textarea class="form-control"
+                          placeholder="Description"
+                          name="book_description"></textarea>
             </div>
 
+            <!-- COVER -->
             <div class="mb-3">
                 <label class="form-label">Cover Image :</label>
-                <input type="file" class="form-control" name="book_cover" required>
+                <input type="file" class="form-control"
+                       name="book_cover" required>
             </div>
 
             <div class="text-center">
-                <button type="submit" class="btn btn-primary mb-3 mt-3" style="width:250px;">Submit</button>
+                <button type="submit"
+                        class="btn btn-primary mb-3 mt-3"
+                        style="width:250px;">
+                    Submit
+                </button>
             </div>
+
         </form>
     </div>
 </div>
 
+<!-- ================= VALIDATION SCRIPT ================= -->
 <script>
-    document.addEventListener('DOMContentLoaded',function(){
-    const err_booktitle=document.getElementById('err_booktitle');
+document.addEventListener('DOMContentLoaded',function(){
 
+    const err_booktitle  = document.getElementById('err_booktitle');
+    const err_bookauthor = document.getElementById('err_bookauthor');
+
+    /* BOOK TITLE */
     window.Validationbooktitle=function(){
-    err_booktitle.innerHTML=/^[A-Za-z\s-.]+$/.test(myform.book_title.value.trim())
-    ? "" : "Please enter a Valid Book Title";
+        err_booktitle.innerHTML =
+        /^[A-Za-z0-9\s.-]+$/.test(myform.book_title.value.trim())
+        ? "" : "Only letters, numbers, spaces, dot and hyphen allowed";
     }
 
-    window.Validations=function(){
-    Validationbooktitle();
-    return document.querySelectorall('.text-danger:not(:empty)').length===0;
+    window.Validationbookauthor=function(){
+        err_bookauthor.innerHTML =
+        /^[A-Z][a-z]+(\s([A-Z][a-z]+|[A-Z](\.[A-Z])?\.?))*$/
+        .test(myform.book_author.value.trim())
+        ? "" : "Enter a valid author name";
     }
-    });
+
+    /* PRICE */
+    window.Validationbookprice=function(){
+        return /^[0-9]+$/.test(myform.book_price.value.trim());
+    }
+
+    /* PUBLISHER */
+    window.Validationpublisher=function(){
+        return /^[A-Za-z\s]+$/.test(myform.book_publisher.value.trim());
+    }
+
+    /* DESCRIPTION */
+    window.Validationdescription=function(){
+        return /^[A-Za-z0-9\s]+$/.test(myform.book_description.value.trim());
+    }
+
+    /* FINAL CHECK */
+    window.Validations=function(){
+
+        Validationbooktitle();
+        Validationbookauthor();
+
+        if(
+            !Validationbookprice() ||
+            !Validationpublisher() ||
+            !Validationdescription()
+        ){
+            alert("Please correct invalid fields");
+            return false;
+        }
+
+        return document.querySelectorAll('.text-danger:not(:empty)').length === 0;
+    }
+
+});
 </script>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+<!-- ================= DJANGO MESSAGES ================= -->
 {% if messages %}
 {% for i in messages %}
 {% if 'success' in i.tags %}
-<script> swal('{{i}}', '', 'success'); </script>
-
+<script> swal('{{ i }}', '', 'success'); </script>
 {% elif 'warning' in i.tags %}
-<script> swal('{{i}}', '', 'warning'); </script>
-
+<script> swal('{{ i }}', '', 'warning'); </script>
 {% elif 'info' in i.tags %}
-<script> swal('{{i}}', '', 'info'); </script>
-
+<script> swal('{{ i }}', '', 'info'); </script>
 {% elif 'error' in i.tags %}
-<script> swal('{{i}}', '', 'error'); </script>
-
+<script> swal('{{ i }}', '', 'error'); </script>
 {% endif %}
 {% endfor %}
 {% endif %}
