@@ -168,28 +168,28 @@ def updatebook(request, b_id):
             book_title_regex = r'^[A-Za-z\s.-]+$'
             if not re.match(book_title_regex, book_title):
                 messages.warning(request, "Please enter a valid Book Title")
-                return redirect(editbook,b_id=b_id)
+                return redirect(displaybook,b_id=b_id)
 
             # ================= AUTHOR VALIDATION =================
             author_regex = r'^[A-Z][a-z]+(\s([A-Z][a-z]+|[A-Z](\.[A-Z])?\.?))*$'
             if not re.match(author_regex, book_author):
                 messages.warning(request, "Please enter a valid Author Name")
-                return redirect(editbook,b_id=b_id)
+                return redirect(displaybook,b_id=b_id)
 
             # ================= PRICE VALIDATION =================
             if not book_price.isdigit():
                 messages.warning(request, "Price must be a number")
-                return redirect(editbook,b_id=b_id)
+                return redirect(displaybook,b_id=b_id)
 
             # ================= PUBLISHER VALIDATION =================
             if not re.match(r'^[A-Za-z\s]+$', book_publisher):
                 messages.warning(request, "Please enter a valid Publisher name")
-                return redirect(editbook,b_id=b_id)
+                return redirect(displaybook,b_id=b_id)
 
             # ================= DESCRIPTION VALIDATION =================
             if not re.match(r'^[A-Za-z0-9\s]+$', book_description):
                 messages.warning(request, "Description should not contain special characters")
-                return redirect(editbook,b_id=b_id)
+                return redirect(displaybook,b_id=b_id)
 
         bookdb.objects.filter(id=b_id).update(Book_title=book_title,
                                               Book_author=book_author,
