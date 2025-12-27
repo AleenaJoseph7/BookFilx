@@ -43,13 +43,13 @@
             <div class="mb-3">
                 <label class="form-label">Publisher :</label>
                 <input type="text" class="form-control" placeholder="Publisher" name="book_publisher"
-                       value="{{book.Book_publisher}}">
+                       value="{{book.Book_publisher}}"  onkeyup="Validationpublisher()">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Description:</label>
                 <textarea placeholder="Description" class="form-control" name="book_description">{{book.Book_description}}</textarea>
-                <small class="text-danger" id="err_bookpublisher"></small>
+                <small class="text-danger" id="err_bookpublisher" ></small>
             </div>
 
             <div class="mb-3">
