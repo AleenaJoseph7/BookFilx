@@ -14,7 +14,7 @@
                 <label class="form-label">Book Title :</label>
                 <input type="text" class="form-control" placeholder="Book Title" name="book_title"
                        value="{{book.Book_title}}" onkeyup="Validationbooktitle()">
-                <small class="text-danger" id="err_bookauthor"></small>
+                <small class="text-danger" id="err_booktitle"></small>
             </div>
 
             <div class="mb-3">
@@ -22,7 +22,6 @@
                 <input type="text" class="form-control" placeholder="Author" name="book_author"
                        value="{{book.Book_author}}" onkeyup="Validationbookauthor()">
                 <small class="text-danger" id="err_bookauthor"></small>
-
 
             </div>
 
@@ -47,12 +46,14 @@
                 <label class="form-label">Publisher :</label>
                 <input type="text" class="form-control" placeholder="Publisher" name="book_publisher"
                        value="{{book.Book_publisher}}"  onkeyup="Validationpublisher()">
+                <small class="text-danger" id="err_bookpublisher"></small>
+
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Description:</label>
-                <textarea placeholder="Description" class="form-control" name="book_description">{{book.Book_description}}</textarea>
-                <small class="text-danger" id="err_bookpublisher" onkeyup="Validationdescription()"></small>
+                <textarea placeholder="Description" class="form-control" name="book_description" onkeyup="Validationdescription()">{{book.Book_description}}</textarea>
+                <small class="text-danger" id="err_bookdesc" ></small>
             </div>
 
             <div class="mb-3">
