@@ -197,9 +197,9 @@
 
                         <ul class="dropdown-menu dropdown-menu-end shadow">
                             {% if request.session.username %}
-                                <li><a class="dropdown-item text-danger" href="{% url 'adminlogout' %}">Logout</a></li>
+                            <li><a class="dropdown-item text-danger" href="{% url 'adminlogout' %}">Logout</a></li>
                             {% else %}
-                                <li><a class="dropdown-item text-primary" href="{% url 'adminloginpage' %}">Login</a></li>
+                            <li><a class="dropdown-item text-primary" href="{% url 'adminloginpage' %}">Login</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -216,7 +216,7 @@
             <div class="row">
 
 
-                <div class="col-lg-6 col-md-6 col-sm-12 mb-4" >
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
                     <div class="dashboard-card shadow-sm">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
@@ -302,17 +302,17 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 {% if messages %}
-    {% for i in messages %}
-        {% if 'success' in i.tags %}
-            <script> swal('{{i}}', '', 'success'); </script>
-        {% elif 'warning' in i.tags %}
-            <script> swal('{{i}}', '', 'warning'); </script>
-        {% elif 'info' in i.tags %}
-            <script> swal('{{i}}', '', 'info'); </script>
-        {% elif 'error' in i.tags %}
-            <script> swal('{{i}}', '', 'error'); </script>
-        {% endif %}
-    {% endfor %}
+{% for i in messages %}
+{% if 'success' in i.tags %}
+<script> swal('{{i}}', '', 'success'); </script>
+{% elif 'warning' in i.tags %}
+<script> swal('{{i}}', '', 'warning'); </script>
+{% elif 'info' in i.tags %}
+<script> swal('{{i}}', '', 'info'); </script>
+{% elif 'error' in i.tags %}
+<script> swal('{{i}}', '', 'error'); </script>
+{% endif %}
+{% endfor %}
 {% endif %}
 
 </body>
