@@ -6,13 +6,15 @@
         <h1 class="text-center mb-5" style="color:darkblue; font-size:35px; font-weight:bold; font-family:Arial;">
             Book Updation
         </h1>
-        <form action="{% url 'updatebook' b_id=book.id %}" method="post" enctype="multipart/form-data" name="myform" onsubmit="Validations()">
+        <form action="{% url 'updatebook' b_id=book.id %}" method="post" enctype="multipart/form-data" name="myform"
+              onsubmit="Validations()">
             {% csrf_token %}
 
             <div class="mb-3">
                 <label class="form-label">Book Title :</label>
                 <input type="text" class="form-control" placeholder="Book Title" name="book_title"
                        value="{{book.Book_title}}">
+                <small class="text-danger" id="err_bookauthor"></small>
             </div>
 
             <div class="mb-3">
