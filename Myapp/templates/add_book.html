@@ -99,62 +99,62 @@
 
 <!-- ================= VALIDATION SCRIPT ================= -->
 <script>
-document.addEventListener('DOMContentLoaded',function(){
+    document.addEventListener('DOMContentLoaded',function(){
 
-    const err_booktitle     = document.getElementById('err_booktitle');
-    const err_bookauthor    = document.getElementById('err_bookauthor');
-    const err_bookprice     = document.getElementById('err_bookprice');
-    const err_bookpublisher = document.getElementById('err_bookpublisher');
-    const err_bookdesc      = document.getElementById('err_bookdesc');
+        const err_booktitle     = document.getElementById('err_booktitle');
+        const err_bookauthor    = document.getElementById('err_bookauthor');
+        const err_bookprice     = document.getElementById('err_bookprice');
+        const err_bookpublisher = document.getElementById('err_bookpublisher');
+        const err_bookdesc      = document.getElementById('err_bookdesc');
 
-    /* BOOK TITLE */
-    window.Validationbooktitle=function(){
-        err_booktitle.innerHTML =
-        /^[A-Za-z0-9\s.-]+$/.test(myform.book_title.value.trim())
-        ? "" : "Only letters, numbers, spaces, dot and hyphen allowed";
-    }
+        /* BOOK TITLE */
+        window.Validationbooktitle=function(){
+            err_booktitle.innerHTML =
+            /^[A-Za-z0-9\s.-]+$/.test(myform.book_title.value.trim())
+            ? "" : "Only letters, numbers, spaces, dot and hyphen allowed";
+        }
 
-    window.Validationbookauthor=function(){
-        err_bookauthor.innerHTML =
-        /^[A-Z][a-z]+(\s([A-Z][a-z]+|[A-Z](\.[A-Z])?\.?))*$/
-        .test(myform.book_author.value.trim())
-        ? "" : "Enter a valid author name";
-    }
+        window.Validationbookauthor=function(){
+            err_bookauthor.innerHTML =
+            /^[A-Z][a-z]+(\s([A-Z][a-z]+|[A-Z](\.[A-Z])?\.?))*$/
+            .test(myform.book_author.value.trim())
+            ? "" : "Enter a valid author name";
+        }
 
-    /* PRICE */
-    window.Validationbookprice=function(){
-        err_bookprice.innerHTML =
-        /^[0-9]+$/.test(myform.book_price.value.trim())
-        ? "" : "Price must contain numbers only";
-    }
+        /* PRICE */
+        window.Validationbookprice=function(){
+            err_bookprice.innerHTML =
+            /^[0-9]+$/.test(myform.book_price.value.trim())
+            ? "" : "Price must contain numbers only";
+        }
 
-    /* PUBLISHER */
-    window.Validationpublisher=function(){
-        err_bookpublisher.innerHTML =
-        /^[A-Za-z\s]+$/.test(myform.book_publisher.value.trim())
-        ? "" : "Publisher name must contain letters only";
-    }
+        /* PUBLISHER */
+        window.Validationpublisher=function(){
+            err_bookpublisher.innerHTML =
+            /^[A-Za-z\s]+$/.test(myform.book_publisher.value.trim())
+            ? "" : "Publisher name must contain letters only";
+        }
 
-    /* DESCRIPTION */
-    window.Validationdescription=function(){
-        err_bookdesc.innerHTML =
-        /^[A-Za-z0-9\s]+$/.test(myform.book_description.value.trim())
-        ? "" : "No special characters allowed";
-    }
+        /* DESCRIPTION */
+        window.Validationdescription=function(){
+            err_bookdesc.innerHTML =
+            /^[A-Za-z0-9\s]+$/.test(myform.book_description.value.trim())
+            ? "" : "No special characters allowed";
+        }
 
-    /* FINAL FORM VALIDATION */
-    window.Validations=function(){
+        /* FINAL FORM VALIDATION */
+        window.Validations=function(){
 
-        Validationbooktitle();
-        Validationbookauthor();
-        Validationbookprice();
-        Validationpublisher();
-        Validationdescription();
+            Validationbooktitle();
+            Validationbookauthor();
+            Validationbookprice();
+            Validationpublisher();
+            Validationdescription();
 
-        return document.querySelectorAll('.text-danger:not(:empty)').length === 0;
-    }
+            return document.querySelectorAll('.text-danger:not(:empty)').length === 0;
+        }
 
-});
+    });
 </script>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
