@@ -101,28 +101,28 @@ def savebook(request):
         book_title_regex = r'^[A-Za-z\s.-]+$'
         if not re.match(book_title_regex, book_title):
             messages.warning(request, "Please enter a valid Book Title")
-            return redirect('addbook')
+            return redirect(addbook)
 
         # ================= AUTHOR VALIDATION =================
         author_regex = r'^[A-Z][a-z]+(\s([A-Z][a-z]+|[A-Z](\.[A-Z])?\.?))*$'
         if not re.match(author_regex, book_author):
             messages.warning(request, "Please enter a valid Author Name")
-            return redirect('addbook')
+            return redirect(addbook)
 
         # ================= PRICE VALIDATION =================
         if not book_price.isdigit():
             messages.warning(request, "Price must be a number")
-            return redirect('addbook')
+            return redirect(addbook)
 
         # ================= PUBLISHER VALIDATION =================
         if not re.match(r'^[A-Za-z\s]+$', book_publisher):
             messages.warning(request, "Please enter a valid Publisher name")
-            return redirect('addbook')
+            return redirect(addbook)
 
         # ================= DESCRIPTION VALIDATION =================
         if not re.match(r'^[A-Za-z0-9\s]+$', book_description):
             messages.warning(request, "Description should not contain special characters")
-            return redirect('addbook')
+            return redirect(addbook)
 
         ob = bookdb(Book_title=book_title,
                     Book_author=book_author,
@@ -163,6 +163,33 @@ def updatebook(request, b_id):
             files = fs.save(book_cover.name, book_cover)
         except MultiValueDictKeyError:
             files = bookdb.objects.get(id=b_id).Book_cover
+
+            # ================= BOOK TITLE VALIDATION =================
+            book_title_regex = r'^[A-Za-z\s.-]+$'
+            if not re.match(book_title_regex, book_title):
+                messages.warning(request, "Please enter a valid Book Title")
+                return redirect()
+
+            # ================= AUTHOR VALIDATION =================
+            author_regex = r'^[A-Z][a-z]+(\s([A-Z][a-z]+|[A-Z](\.[A-Z])?\.?))*$'
+            if not re.match(author_regex, book_author):
+                messages.warning(request, "Please enter a valid Author Name")
+                return redirect('addbook')
+
+            # ================= PRICE VALIDATION =================
+            if not book_price.isdigit():
+                messages.warning(request, "Price must be a number")
+                return redirect('addbook')
+
+            # ================= PUBLISHER VALIDATION =================
+            if not re.match(r'^[A-Za-z\s]+$', book_publisher):
+                messages.warning(request, "Please enter a valid Publisher name")
+                return redirect('addbook')
+
+            # ================= DESCRIPTION VALIDATION =================
+            if not re.match(r'^[A-Za-z0-9\s]+$', book_description):
+                messages.warning(request, "Description should not contain special characters")
+                return redirect('addbook')
 
         bookdb.objects.filter(id=b_id).update(Book_title=book_title,
                                               Book_author=book_author,
