@@ -43,7 +43,7 @@ def savecatergory(request):
             messages.warning(request,"Please enter a valid Catergory Name")
             return redirect(addcatergory)
         if not re.match(catergory_description_regex,catergory_description):
-            messages.warning(request, "Please enter a valid Catergory Description")
+            messages.warning(request, "Please enter a valid Catergory Description(Min :5 chars)")
             return redirect(addcatergory)
 
 
@@ -85,7 +85,7 @@ def updatecatergory(request, c_id):
             messages.warning(request, "Please enter a valid Catergory Name")
             return redirect(displaycatergory,c_id=c_id)
         if not re.match(catergory_description_regex, catergory_description):
-            messages.warning(request, "Please enter a valid Catergory Description")
+            messages.warning(request, "Please enter a valid Catergory Description(Min :5 chars)")
             return redirect(displaycatergory,c_id=c_id)
 
         catergorydb.objects.filter(id=c_id).update(Catergory_name=catergory_name,
