@@ -16,7 +16,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Descritpion :</label>
-                <textarea placeholder="Description" name="catergory_description" class="form-control" onkeyup="Validationdesc"></textarea>
+                <textarea placeholder="Description" name="catergory_description" class="form-control" onkeyup="Validationdesc()"></textarea>
                 <small class="text-danger" id="error_desc"></small>
             </div>
 
@@ -33,12 +33,24 @@
 </div>
 
 <script>
-    document.allEventListener('DOMContentLoaded',function(){
+    document.addEventListener('DOMContentLoaded',function(){
      const error_cat=document.getElementById('error_cat');
      const error_desc=document.getElementById('error_desc');
 
      window.Validationcat=function(){
-        error_cat.innerHTML='^[A-Z][a-z]+$'.test(myform.)
+        error_cat.innerHTML=/^[A-Z][a-z]+$/.test(myform.catergory_name.value.trim())
+        ? "" : "Please enter a valid Catergory Name";
+     }
+
+     window.Validationdesc=function(){
+        error_desc.innerHTML=/^[A-Za-z0-9 ,()-.]$/.test(myform.catergory_description.value.trim())
+        ? "" : "Please enter a valid Catergory Description";
+     }
+
+     window.Validations=function(){
+        Validationcat();
+        Validationdesc();
+        return document.querySelectorAll('.text-danger:not(:empty)').length===0;
      }
     });
 </script>
