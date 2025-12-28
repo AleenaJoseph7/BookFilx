@@ -37,17 +37,17 @@
      const error_cat=document.getElementById('error_cat');
      const error_desc=document.getElementById('error_desc');
 
-     window.Validationcat=function(){
-        error_cat.innerHTML=/^[A-Z][a-z]+$/.test(myform.catergory_name.value.trim())
+     window.Validationcat = function(){
+        error_cat.innerHTML=/^[A-Z][a-z ]+$/.test(myform.catergory_name.value.trim())
         ? "" : "Please enter a valid Catergory Name";
      }
 
-     window.Validationdesc=function(){
-        error_desc.innerHTML=/^[A-Za-z0-9 ,()-.]+$/.test(myform.catergory_description.value.trim())
+     window.Validationdesc = function(){
+        error_desc.innerHTML=/^[A-Za-z0-9 ,()-.]{5,}$/.test(myform.catergory_description.value.trim())
         ? "" : "Please enter a valid Catergory Description";
      }
 
-     window.Validations=function(){
+     window.Validations = function(){
         Validationcat();
         Validationdesc();
         return document.querySelectorAll('.text-danger:not(:empty)').length===0;
