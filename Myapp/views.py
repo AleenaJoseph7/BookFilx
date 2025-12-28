@@ -36,7 +36,14 @@ def savecatergory(request):
         catergory_description = request.POST.get('catergory_description')
         catergory_cover = request.FILES.get('catergory_cover')
 
-        catergory_name_regex=r'^[A-Z][A-Za-z ]$'
+        catergory_name_regex=r'^[A-Z][A-Za-z/s]$';
+        catergory_description_regex=r'^[A-Za-z0-9/s-.(),]$';
+
+        if not re.match(catergory_name_regex,catergory_name):
+            messages.warning(request,"Please enter a valid Catergory Name")
+            return redirect(addcatergory)
+        if not re.match(catergory_description_regex,catergory_description):
+
 
         ob = catergorydb(Catergory_name=catergory_name,
                          Catergory_description=catergory_description,
