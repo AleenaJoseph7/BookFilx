@@ -36,6 +36,13 @@
 
 <script>
     document.addEventListener('DOMContentLoaded',function(){
+        const error_cat=document.getElementById('error_cat');
+        const error_desc=document.getElementById('error_desc');
+
+        window.Validationcat=function(){
+            error_cat.innerHTML=/^[A-Z][a-z]+$/.test(myform.catergory_name.value.trim())
+            ? "" : "Please enter a valid Catergory Name";
+        }
     });
 </script>
 
