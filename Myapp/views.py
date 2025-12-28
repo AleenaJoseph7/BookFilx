@@ -78,6 +78,16 @@ def updatecatergory(request, c_id):
         except MultiValueDictKeyError:
             files = catergorydb.objects.get(id=c_id).Catergory_cover
 
+        catergory_name_regex = r'^[A-Z][A-Za-z/s]$';
+        catergory_description_regex = r'^[A-Za-z0-9/s-.(),]$';
+
+        if not re.match(catergory_name_regex, catergory_name):
+            messages.warning(request, "Please enter a valid Catergory Name")
+            return redirect(displaycatergory,c_id=c_id)
+        if not re.match(catergory_description_regex, catergory_description):
+            messages.warning(request, "Please enter a valid Catergory Description")
+            return redirect(displaycatergory,c_id=c_id)
+
         catergorydb.objects.filter(id=c_id).update(Catergory_name=catergory_name,
                                                    Catergory_description=catergory_description,
                                                    Catergory_cover=files)
