@@ -45,8 +45,15 @@
         }
 
         window.Validationdesc=function(){
-        error_desc.innerHTML=/^[A-Za-z0-9 .,()-]+$/.test(myform.catergory_description.value.trim())
-        ? "" : "Please enter a valid Description";
+            error_desc.innerHTML=/^[A-Za-z0-9 .,()-]+$/.test(myform.catergory_description.value.trim())
+            ? "" : "Please enter a valid Description";
+        }
+
+        window.Validations=funtion(){
+            Validationcat();
+            Validationdesc();
+
+            return document.querySelecorAll('.text-danger:not(:empty)').length===0;
         }
 
     });
