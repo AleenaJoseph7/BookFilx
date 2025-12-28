@@ -43,6 +43,8 @@ def savecatergory(request):
             messages.warning(request,"Please enter a valid Catergory Name")
             return redirect(addcatergory)
         if not re.match(catergory_description_regex,catergory_description):
+            messages.warning(request, "Please enter a valid Catergory Description")
+            return redirect(addcatergory)
 
 
         ob = catergorydb(Catergory_name=catergory_name,
