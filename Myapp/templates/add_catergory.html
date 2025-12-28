@@ -43,7 +43,7 @@
      }
 
      window.Validationdesc=function(){
-        error_desc.innerHTML=/^[A-Za-z0-9 ,()-.]$/.test(myform.catergory_description.value.trim())
+        error_desc.innerHTML=/^[A-Za-z0-9 ,()-.]+$/.test(myform.catergory_description.value.trim())
         ? "" : "Please enter a valid Catergory Description";
      }
 
