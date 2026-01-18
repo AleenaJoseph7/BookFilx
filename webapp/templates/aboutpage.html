@@ -2,43 +2,30 @@
 {% load static %}
 {% block content %}
 
-<section id="billboard">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+<div class="main-slider pattern-overlay">
+  <div class="slider-item about-slide">
+    <div class="banner-content">
+      <h2 class="banner-title">ABOUT US</h2>
+      <p>
+        "Driven by passion, guided by purpose, we turn ideas into impact and dreams into reality."
+      </p>
 
-                <button class="prev slick-arrow">
-                    <i class="icon icon-arrow-left"></i>
-                </button>
-
-                <div class="main-slider pattern-overlay">
-                    <div class="slider-item">
-                        <div class="banner-content">
-                            <h2 class="banner-title">ABOUT US</h2>
-                            <p>
-                                "Driven by passion, guided by purpose, we turn ideas into impact and dreams into
-                                reality."
-                            </p>
-                            <div class="btn-wrap">
-                                <a href="{% url 'Aboutpage' %}" class="btn btn-outline-accent btn-accent-arrow">Read
-                                    More<i
-                                            class="icon icon-ns-arrow-right"></i></a>
-                            </div>
-                        </div><!--banner-content-->
-                        <img src="{% static 'web/images/aboutimage4.jpg' %}" alt="banner" class="banner-image"
-                             style=" border-radius:10px;" height="400px" width="400px">
-                    </div>
-
-                </div><!--slider-->
-
-                <button class="next slick-arrow">
-                    <i class="icon icon-arrow-right"></i>
-                </button>
-
-            </div>
-        </div>
+      <div class="btn-wrap">
+        <a href="{% url 'Aboutpage' %}" class="btn btn-outline-accent btn-accent-arrow">
+          Read More <i class="icon icon-ns-arrow-right"></i>
+        </a>
+      </div>
     </div>
-</section>
+
+    <div class="banner-media">
+      <img src="{% static 'web/images/aboutimage4.jpg' %}"
+           alt="banner"
+           class="banner-image"
+           style="border-radius:10px;">
+    </div>
+  </div>
+</div>
+
 
 <div class="container-fluid">
 
@@ -260,5 +247,65 @@
       font-weight: 600;
       color: #555;
     }
+
+/* ABOUT banner alignment fix */
+#billboard .about-slide{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 0;
+}
+
+#billboard .about-slide .banner-content{
+  flex: 1;
+  max-width: 520px;
+}
+
+#billboard .about-slide .banner-title{
+  margin-bottom: 14px;
+}
+
+#billboard .about-slide p{
+  font-size: 18px;
+  line-height: 1.8;
+  margin: 0 0 22px;
+}
+
+#billboard .about-slide .banner-media{
+  flex: 0 0 420px;   /* fixed width for image column */
+  display: flex;
+  justify-content: center;
+}
+
+#billboard .about-slide .banner-image{
+  width: 100%;
+  max-width: 420px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+/* Responsive */
+@media (max-width: 992px){
+  #billboard .about-slide{
+    flex-direction: column;
+    text-align: center;
+  }
+  #billboard .about-slide .banner-content{
+    max-width: 100%;
+  }
+  #billboard .about-slide .banner-media{
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  #billboard .about-slide .banner-image{
+    max-width: 520px;
+    height: 360px;
+  }
+}
+
+
 </style>
 {% endblock %}
