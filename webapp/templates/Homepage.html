@@ -20,6 +20,211 @@
     <link rel="stylesheet" type="text/css" href="{% static 'web/icomoon/icomoon.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'web/css/vendor.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'web/style.css' %}">
+    <style>
+        /* ===== Global cleanup (kills blue underlines + weird spacing) ===== */
+        :root{
+          --accent:#c5a992;
+          --bg:#f3f2ec;
+          --text:#111;
+          --muted:#777;
+        }
+        *{ box-sizing:border-box; }
+        body{ background: var(--bg); color: var(--text); }
+        a{ text-decoration:none !important; color:inherit; }
+        a:hover{ color: var(--accent); }
+
+        /* ===== Top header right side alignment ===== */
+        .top-content{
+          background: #f3f2ec;
+          border-bottom: 1px solid #edebe4;
+          padding: 10px 0;
+        }
+        .right-element{
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+        .right-element .nav-link{
+          padding: 6px 10px;
+          border-radius: 8px;
+        }
+        .right-element .nav-link:hover{
+          background:#edeae2;
+        }
+
+        /* Cart link - remove blue underline + make it look consistent */
+        a.cart{
+          display:flex;
+          align-items:center;
+          gap:8px;
+          padding: 6px 10px;
+          border-radius: 8px;
+        }
+        a.cart:hover{ background:#edeae2; }
+        a.cart span{ color: var(--text); font-weight:500; }
+
+        /* Search bar */
+        .search-bar{
+          display:flex;
+          align-items:center;
+          gap:8px;
+        }
+        .search-box{ margin:0; }
+        .search-field{
+          width: 220px;
+          height: 36px;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          padding: 0 10px;
+          background:#fff;
+          outline:none;
+        }
+        .search-field:focus{ border-color: var(--accent); }
+
+        /* ===== Navbar fixes (spacing + remove underline + active style) ===== */
+        #header{
+          background: #f3f2ec;
+          padding: 12px 0;
+          border-bottom: 1px solid #edebe4;
+        }
+        .main-logo a h2{ margin:0; text-decoration:none !important; }
+        .stellarnav ul{ text-align:right; }
+        .stellarnav > ul > li > a{
+          padding: 10px 18px !important;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          font-size: 14px;
+          color:#333 !important;
+          border-radius: 10px;
+        }
+        .stellarnav > ul > li > a:hover{
+          color: var(--accent) !important;
+          background:#edeae2;
+        }
+        .menu-item.active > a{
+          color: var(--accent) !important;
+          font-weight: 700;
+        }
+
+        /* Dropdown background looks nicer */
+        .stellarnav ul ul{
+          background:#fff !important;
+          border: 1px solid #eee;
+          border-radius: 10px;
+          padding: 8px 0;
+          box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        }
+        .stellarnav ul ul li a{
+          padding:10px 14px !important;
+          color:#111 !important;
+        }
+        .stellarnav ul ul li a:hover{
+          background:#f6f4ef;
+          color: var(--accent) !important;
+        }
+
+        /* ===== HERO carousel (Bootstrap) styling ===== */
+        #billboard{ padding: 40px 0; }
+        .hero-card{
+          background: #f6f4ef;
+          border: 1px solid #ebe7df;
+          border-radius: 18px;
+          padding: 30px;
+          overflow:hidden;
+        }
+        .hero-title{
+          font-size: 44px;
+          font-weight: 700;
+          margin-bottom: 12px;
+        }
+        .hero-text{
+          color: var(--muted);
+          line-height: 1.8;
+          margin-bottom: 18px;
+        }
+        .hero-img{
+          width: 100%;
+          max-width: 420px;
+          height: auto;
+          border-radius: 14px;
+          box-shadow: 0 20px 40px rgba(0,0,0,.12);
+        }
+        .btn-accent{
+          background: transparent;
+          border: 1px solid var(--accent);
+          color: var(--accent);
+          border-radius: 10px;
+          padding: 10px 18px;
+          font-weight: 600;
+        }
+        .btn-accent:hover{
+          background: var(--accent);
+          color: #fff;
+        }
+
+        /* ===== Fix the random blue “View all products” underline ===== */
+        .btn-accent-arrow{
+          text-decoration:none !important;
+          color:#111;
+          font-weight:600;
+        }
+        .btn-accent-arrow:hover{ color: var(--accent); }
+
+        /* ===== Footer fix (your footer is “messed up” mostly from spacing + icon list) ===== */
+        #footer{
+          background:#f3f2ec;
+          padding: 70px 0 40px;
+          border-top: 1px solid #edebe4;
+        }
+        #footer .footer-menu ul,
+        #footer .footer-menu li{
+          list-style:none;
+          padding:0;
+          margin:0;
+        }
+        #footer .footer-menu li{ margin: 10px 0; }
+        #footer .footer-menu a{ color:#333; }
+        #footer .footer-menu a:hover{ color: var(--accent); }
+
+        #footer-bottom{
+          background:#f3f2ec;
+          border-top: 1px solid #edebe4;
+          padding: 18px 0;
+        }
+
+        /* Social icons should be horizontal (not stacked) */
+        .social-links ul{
+          list-style:none;
+          display:flex;
+          justify-content:flex-end;
+          align-items:center;
+          gap: 14px;
+          margin:0;
+          padding:0;
+        }
+        .social-links ul li{ margin:0; }
+        .social-links a{
+          width: 38px;
+          height: 38px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          border-radius: 10px;
+          border: 1px solid #e5e0d6;
+          background:#fff;
+        }
+        .social-links a:hover{
+          border-color: var(--accent);
+          color: var(--accent);
+        }
+
+        /* Small screens */
+        @media (max-width: 768px){
+          .stellarnav ul{ text-align:left; }
+          .search-field{ width: 160px; }
+          .hero-title{ font-size: 34px; }
+        }
+    </style>
+
 
 </head>
 
@@ -66,17 +271,7 @@
                             <i class="icon icon-clipboard"></i><span>Cart({{cart_count}})</span>
                         </a>
                         {% endif %}
-                        <!-- Search -->
-                        <div class="action-menu">
-                            <div class="search-bar">
-                                <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
-                                    <i class="icon icon-search"></i>
-                                </a>
-                                <form role="search" method="get" class="search-box">
-                                    <input class="search-field text search-input" placeholder="Search" type="search">
-                                </form>
-                            </div>
-                        </div>
+
 
                     </div>
                     <!--top-right-->
@@ -93,7 +288,7 @@
                 <div class="col-md-2">
                     <div class="main-logo">
                         <a href="{% url 'Homepage' %}">
-                            <h2 style="font-weight:800; font-size:32px; color:#0b0c10; margin:0px;">BookFlix</h2>
+                            <h2 style="font-weight:800; font-size:32px; color:#0b0c10; margin-left:50px;">BookFlix</h2>
                         </a>
                     </div>
 
@@ -103,18 +298,19 @@
 
                     <nav id="navbar">
                         <div class="main-menu stellarnav">
-                            <ul class="menu-list">
+                            <ul class="menu-list" style="font-size:20px">
 
                                 <li class="menu-item {% if request.resolver_match.url_name == 'Homepage' %}active{% endif %}">
-                                    <a href="{% url 'Homepage' %}">Home</a>
+                                    <a href="{% url 'Homepage' %}" style="font-size:20px; font-weight:600;">Home</a>
                                 </li>
 
                                 <li class="menu-item {% if request.resolver_match.url_name == 'Aboutpage' %}active{% endif %}">
-                                    <a href="{% url 'Aboutpage' %}">About Us</a>
+                                    <a href="{% url 'Aboutpage' %}" style="font-size:20px; font-weight:600;">About
+                                        Us</a>
                                 </li>
 
                                 <li class="menu-item has-sub {% if request.resolver_match.url_name == 'Filterbooks' %}active{% endif %}">
-                                    <a href="#">Category</a>
+                                    <a href="#" style="font-size:20px; font-weight:600">Category</a>
                                     <ul>
                                         {% for i in category %}
                                         <li>
@@ -123,6 +319,7 @@
                                                color:#C5A992; font-weight:600;
                                                {% else %}
                                                color:#111;
+                                               font-size:20px;
                                                {% endif %}">
                                                 {{ i.Catergory_name }}
                                             </a>
@@ -134,11 +331,13 @@
 
 
                                 <li class="menu-item {% if request.resolver_match.url_name == 'Popularpage' %}active{% endif %}">
-                                    <a href="{% url 'Popularpage' %}">Popular</a>
+                                    <a href="{% url 'Popularpage' %}"
+                                       style="font-size:20px; font-weight:600;">Popular</a>
                                 </li>
 
                                 <li class="menu-item {% if request.resolver_match.url_name == 'Contactpage' %}active{% endif %}">
-                                    <a href="{% url 'Contactpage' %}">Contact</a>
+                                    <a href="{% url 'Contactpage' %}"
+                                       style="font-size:20px; font-weight:600;">Contact</a>
                                 </li>
 
                             </ul>
@@ -164,85 +363,86 @@
 <section id="billboard">
     {% block content %}
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4500">
 
-                <button class="prev slick-arrow">
-                    <i class="icon icon-arrow-left"></i>
-                </button>
+            <div class="carousel-inner">
 
-                <div class="main-slider pattern-overlay">
-                    <div class="slider-item d-flex" style="gap:40px">
-                        <div class="banner-content" style="width:500px">
-                            <h2 class="banner-title">Hades' Wolves</h2>
-                            <p>
-                                Enter the shadowed realm of <em>Fall Mountain Shifters</em>, where loyalty is tested and
-                                destiny is
-                                written in moonlight.
-                                When darkness calls and ancient powers awaken, the wolves of Hades must decide serve the
-                                gods or break
-                                free from their fate.
-                            </p>
-                            <div class="btn-wrap">
-                                <a href="{% url 'Popularpage' %}" class="btn btn-outline-accent btn-accent-arrow">
-                                    Read More<i class="icon icon-ns-arrow-right"></i>
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="hero-card">
+                        <div class="row align-items-center g-4">
+                            <div class="col-md-6">
+                                <h2 class="hero-title">Hades' Wolves</h2>
+                                <p class="hero-text">
+                                    Enter the shadowed realm of <em>Fall Mountain Shifters</em>, where loyalty is tested
+                                    and destiny is written in moonlight.
+                                    When darkness calls and ancient powers awaken, the wolves of Hades must decide serve
+                                    the gods or break free from their fate.
+                                </p>
+                                <a href="{% url 'Popularpage' %}" class="btn btn-accent">
+                                    Read More <i class="icon icon-ns-arrow-right"></i>
                                 </a>
                             </div>
-                        </div><!--banner-content-->
-                        <img src="{% static 'web/images/book1.jpg' %}" alt="banner" class="banner-image" height="400px"
-                             width="400px">
-                    </div><!--slider-item-->
+                            <div class="col-md-6 text-center text-md-end">
+                                <img src="{% static 'web/images/book1.jpg' %}" alt="Hades Wolves" class="hero-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="slider-item">
-                        <div class="banner-content">
-                            <h2 class="banner-title">Slaying the Naga King</h2>
-                            <p>
-                                In a realm where serpents rule and shadows whisper, one warrior dares to challenge
-                                destiny.
-                                <em>Slaying the Naga King</em> is a tale of courage, betrayal, and forbidden magic where
-                                every
-                                heartbeat could awaken the serpent god’s wrath.
-                            </p>
-                            <div class="btn-wrap">
-                                <a href="{% url 'Popularpage' %}" class="btn btn-outline-accent btn-accent-arrow">
-                                    Read More<i class="icon icon-ns-arrow-right"></i>
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="hero-card">
+                        <div class="row align-items-center g-4">
+                            <div class="col-md-6">
+                                <h2 class="hero-title">Slaying the Naga King</h2>
+                                <p class="hero-text">
+                                    In a realm where serpents rule and shadows whisper, one warrior dares to challenge
+                                    destiny.
+                                    <em>Slaying the Naga King</em> is a tale of courage, betrayal, and forbidden magic
+                                    where every heartbeat could awaken the serpent god’s wrath.
+                                </p>
+                                <a href="{% url 'Popularpage' %}" class="btn btn-accent">
+                                    Read More <i class="icon icon-ns-arrow-right"></i>
                                 </a>
                             </div>
-                        </div><!--banner-content-->
-                        <img src="{% static 'web/images/book2.jpg' %}" alt="banner" class="banner-image" height="400px"
-                             width="400px">
-                    </div><!--slider-item-->
-
-
-                </div><!--slider-->
-
-                <button class="next slick-arrow">
-                    <i class="icon icon-arrow-right"></i>
-                </button>
+                            <div class="col-md-6 text-center text-md-end">
+                                <img src="{% static 'web/images/book2.jpg' %}" alt="Naga King" class="hero-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
+
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
         </div>
     </div>
-
 </section>
+
 
 <section id="client-holder" data-aos="fade-up">
     <div class="container">
-        <div class="row">
-            <div class="inner-content">
-                <div class="logo-wrap">
-                    <div class="grid">
-                        <a href="#"><img src="{% static 'web/images/client-image1.png' %}" alt="client"></a>
-                        <a href="#"><img src="{% static 'web/images/client-image2.png' %}" alt="client"></a>
-                        <a href="#"><img src="{% static 'web/images/client-image3.png' %}" alt="client"></a>
-                        <a href="#"><img src="{% static 'web/images/client-image4.png' %}" alt="client"></a>
-                        <a href="#"><img src="{% static 'web/images/client-image5.png' %}" alt="client"></a>
-                    </div>
-                </div><!--image-holder-->
-            </div>
+        <div class="grid">
+            <a href="#"><img src="{% static 'web/images/client-image1.png' %}" alt="client"></a>
+            <a href="#"><img src="{% static 'web/images/client-image2.png' %}" alt="client"></a>
+            <a href="#"><img src="{% static 'web/images/client-image3.png' %}" alt="client"></a>
+            <a href="#"><img src="{% static 'web/images/client-image4.png' %}" alt="client"></a>
+            <a href="#"><img src="{% static 'web/images/client-image5.png' %}" alt="client"></a>
         </div>
     </div>
 </section>
+
 
 <section id="featured-books" class="py-5 my-5">
     <div class="container">
@@ -343,16 +543,20 @@
     </div>
 </section>
 
-<section id="quotation" class="align-center pb-5 mb-5 mt-5">
+<section id="quotation">
     <div class="inner-content">
         <h2 class="section-title divider">Quote of the day</h2>
+
         <blockquote data-aos="fade-up">
-            <q>The more that you read, the more things you will know. The more that you learn, the more places
-                you’ll go.</q>
+            <q>
+                The more that you read, the more things you will know. The more that you learn, the more places you’ll
+                go.
+            </q>
             <div class="author-name">Dr. Seuss</div>
         </blockquote>
     </div>
 </section>
+
 
 <section id="subscribe" style="background:#EDEBE4; padding:80px 0;">
     <div class="container">
@@ -439,9 +643,7 @@
                         <li class="menu-item">
                             <a href="{% url 'Homepage' %}">Home</a>
                         </li>
-                        <li class="menu-item">
-                            <a href="{% url 'Popularpage' %}">Books</a>
-                        </li>
+
                     </ul>
                 </div>
 
@@ -454,9 +656,6 @@
                         <li class="menu-item">
                             <a href="{% url 'Usersigninpage' %}">Sign In</a>
                         </li>
-                        <li class="menu-item">
-                            <a href="{% url 'Cartpage' %}">View Cart</a>
-                        </li>
 
                     </ul>
                 </div>
@@ -467,9 +666,7 @@
                 <div class="footer-menu">
                     <h5>Help</h5>
                     <ul class="menu-list">
-                        <li class="menu-item">
-                            <a href="#">Help center</a>
-                        </li>
+
                         <li class="menu-item">
                             <a href="{% url 'Contactpage' %}">Contact us</a>
                         </li>
@@ -522,6 +719,207 @@
         </div>
     </div>
 </div>
+<style>
+    /* ============ CLIENT HOLDER (logo strip) ============ */
+    #client-holder{
+      padding: 35px 0;
+      background: #f3f2ec;
+      border-top: 1px solid #edebe4;
+      border-bottom: 1px solid #edebe4;
+    }
+
+    #client-holder .grid{
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      align-items: center;
+    }
+
+    #client-holder .grid a{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 14px 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.65);
+      border: 1px solid #e8e2d8;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    #client-holder .grid a:hover{
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    #client-holder img{
+      max-height: 46px;
+      max-width: 140px;
+      width: auto;
+      height: auto;
+      opacity: .85;
+      filter: grayscale(100%);
+      transition: opacity .2s ease, filter .2s ease;
+    }
+
+    #client-holder a:hover img{
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+
+    @media (max-width: 992px){
+      #client-holder .grid{ grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 576px){
+      #client-holder .grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ============ QUOTE OF THE DAY ============ */
+    #quotation{
+      padding: 70px 0 50px;
+      background: #f3f2ec;
+    }
+
+    #quotation .inner-content{
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 14px;
+    }
+
+    #quotation .section-title{
+      font-size: 44px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    #quotation .divider{
+      position: relative;
+      display: inline-block;
+      padding-bottom: 14px;
+    }
+
+    #quotation .divider::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 64px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    #quotation blockquote{
+      margin: 24px auto 0;
+      background: rgba(255,255,255,.6);
+      border: 1px solid #e8e2d8;
+      border-radius: 18px;
+      padding: 28px 26px;
+    }
+
+    #quotation q{
+      display:block;
+      font-size: 18px;
+      line-height: 1.9;
+      color: #444;
+    }
+
+    #quotation .author-name{
+      margin-top: 14px;
+      font-weight: 600;
+      color: #111;
+      opacity: .85;
+    }
+
+    /* ============ FOOTER ============ */
+    #footer{
+      background:#f3f2ec;
+      padding: 70px 0 40px;
+      border-top: 1px solid #edebe4;
+    }
+
+    #footer .footer-item h2{
+      color:#0b0c10 !important;
+      margin-bottom: 10px;
+    }
+
+    #footer .footer-item p{
+      color:#555;
+      line-height: 1.8;
+      margin: 0;
+      max-width: 360px;
+    }
+
+    #footer .footer-menu h5{
+      font-weight: 700;
+      margin-bottom: 14px;
+      color:#111;
+    }
+
+    #footer .footer-menu ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    #footer .footer-menu li{
+      margin: 10px 0;
+    }
+
+    #footer .footer-menu a{
+      color:#333;
+      text-decoration:none !important;
+    }
+
+    #footer .footer-menu a:hover{
+      color: var(--accent);
+    }
+
+    #footer-bottom{
+      background:#f3f2ec;
+      border-top: 1px solid #edebe4;
+      padding: 18px 0;
+    }
+
+    #footer-bottom .copyright p{
+      margin:0;
+      color:#555;
+    }
+
+    .social-links ul{
+      list-style:none;
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap: 12px;
+      margin:0;
+      padding:0;
+    }
+
+    .social-links a{
+      width: 40px;
+      height: 40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 12px;
+      border: 1px solid #e5e0d6;
+      background:#fff;
+      color:#111;
+    }
+
+    .social-links a:hover{
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px){
+      #footer .footer-item p{ max-width: 100%; }
+      .social-links ul{ justify-content:flex-start; margin-top: 10px; }
+    }
+</style>
+
 
 <script src="{% static 'web/js/jquery-1.11.0.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
