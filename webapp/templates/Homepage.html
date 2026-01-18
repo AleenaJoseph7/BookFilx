@@ -301,16 +301,16 @@
                             <ul class="menu-list" style="font-size:20px">
 
                                 <li class="menu-item {% if request.resolver_match.url_name == 'Homepage' %}active{% endif %}">
-                                    <a href="{% url 'Homepage' %}" style="font-size:20px; font-weight:600;">Home</a>
+                                    <a href="{% url 'Homepage' %}" style="font-size:20px">Home</a>
                                 </li>
 
                                 <li class="menu-item {% if request.resolver_match.url_name == 'Aboutpage' %}active{% endif %}">
-                                    <a href="{% url 'Aboutpage' %}" style="font-size:20px; font-weight:600;">About
+                                    <a href="{% url 'Aboutpage' %}" style="font-size:20px">About
                                         Us</a>
                                 </li>
 
                                 <li class="menu-item has-sub {% if request.resolver_match.url_name == 'Filterbooks' %}active{% endif %}">
-                                    <a href="#" style="font-size:20px; font-weight:600">Category</a>
+                                    <a href="#" style="font-size:20px">Category</a>
                                     <ul>
                                         {% for i in category %}
                                         <li>
@@ -332,12 +332,12 @@
 
                                 <li class="menu-item {% if request.resolver_match.url_name == 'Popularpage' %}active{% endif %}">
                                     <a href="{% url 'Popularpage' %}"
-                                       style="font-size:20px; font-weight:600;">Popular</a>
+                                       style="font-size:20px; ">Popular</a>
                                 </li>
 
                                 <li class="menu-item {% if request.resolver_match.url_name == 'Contactpage' %}active{% endif %}">
                                     <a href="{% url 'Contactpage' %}"
-                                       style="font-size:20px; font-weight:600;">Contact</a>
+                                       style="font-size:20px">Contact</a>
                                 </li>
 
                             </ul>
