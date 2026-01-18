@@ -140,10 +140,7 @@ p {
   color: var(--accent-color);
 }
 
-.btn-outline-accent:hover {
-  background: var(--accent-color);
-  color: #fff;
-}
+
 
 /* =========================
    SECTIONS
