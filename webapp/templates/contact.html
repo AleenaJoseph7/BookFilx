@@ -2,46 +2,29 @@
 {% load static %}
 {% block content %}
 
-<section id="billboard">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+<div class="main-slider pattern-overlay">
+  <div class="slider-item contact-slide">
+    <div class="banner-content">
+      <h2 class="banner-title">Get in Touch</h2>
+      <p>
+        Have questions, feedback, or partnership ideas? <br>
+        We’d love to hear from you! Our team is here to help you explore, connect, and grow with
+        <em>BookFlix</em>.
+      </p>
 
-                <button class="prev slick-arrow">
-                    <i class="icon icon-arrow-left"></i>
-                </button>
-
-                <div class="main-slider pattern-overlay">
-                    <div class="slider-item">
-                        <div class="banner-content">
-                            <h2 class="banner-title">Get in Touch</h2>
-                            <p>
-                                Have questions, feedback, or partnership ideas? <br>
-                                We’d love to hear from you! Our team is here to help you explore, connect, and grow with
-                                <em>BookFlix</em>.
-                            </p>
-                            <div class="btn-wrap">
-                                <a href="{% url 'Contactpage' %}" class="btn btn-outline-accent btn-accent-arrow">
-                                    Contact Us <i class="icon icon-ns-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div><!-- banner-content -->
-                        <img src="{% static 'web/images/contact.jpg' %}" alt="Contact Banner" class="banner-image"
-                             style=" border-radius:10px;" height="350px" width="350px">
-                    </div>
-
-
-                </div><!--slider-->
-
-                <button class="next slick-arrow">
-                    <i class="icon icon-arrow-right"></i>
-                </button>
-
-            </div>
-        </div>
+      <div class="btn-wrap">
+        <a href="{% url 'Contactpage' %}" class="btn btn-outline-accent btn-accent-arrow">
+          Contact Us <i class="icon icon-ns-arrow-right"></i>
+        </a>
+      </div>
     </div>
 
-</section>
+    <div class="banner-media">
+      <img src="{% static 'web/images/contact.jpg' %}" alt="Contact Banner" class="banner-image">
+    </div>
+  </div>
+</div>
+
 
 <div class="contact-wrapper">
     <!-- Left: Info -->
@@ -355,7 +338,62 @@
       background: #8b5e3c;
       color: white;
     }
+
+/* CONTACT banner alignment fix */
+#billboard .contact-slide{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 0;
+}
+
+#billboard .contact-slide .banner-content{
+  flex: 1;
+  max-width: 560px;
+}
+
+#billboard .contact-slide .banner-media{
+  flex: 0 0 380px;
+  display: flex;
+  justify-content: center;
+}
+
+#billboard .contact-slide .banner-image{
+  width: 100%;
+  max-width: 380px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+/* Hide arrows on Contact page (only 1 slide, arrows look goofy) */
+#billboard .prev,
+#billboard .next{
+  display:none;
+}
+
+/* Responsive */
+@media (max-width: 992px){
+  #billboard .contact-slide{
+    flex-direction: column;
+    text-align: center;
+  }
+  #billboard .contact-slide .banner-content{
+    max-width: 100%;
+  }
+  #billboard .contact-slide .banner-media{
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  #billboard .contact-slide .banner-image{
+    max-width: 520px;
+    height: 340px;
+  }
+}
 </style>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% if messages %}
 {% for i in messages %}
