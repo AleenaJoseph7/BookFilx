@@ -217,23 +217,28 @@ def PaymentPage(request):
     category = catergorydb.objects.all()
 
     uname = request.session.get('username')
+
+    cart_count = 0
     if uname:
         cart_count = cartdb.objects.filter(Singlebook_username=uname).count()
+    if not uname:
+        return redirect(Usersigninpage)
 
-    #payment details
-    customer=Checkoutdb.objects.order_by("-id").first()
-    pay=customer.Total_amount
-    amount=int(pay*100)
-    pay_str=str(amount)
+    customer = Checkoutdb.objects.order_by("-id").first()
+    pay = customer.Total_amount if customer else 0
+    amount = int(pay * 100)
+    pay_str = str(amount)
 
-    if request.method=='POST':
+    if request.method == 'POST':
         client = razorpay.Client(auth=('rzp_test_0ib0jPwwZ7I1lT', 'VjHNO5zKeKxz8PYe7VnzwxMR'))
-        payment=client.order.create({'amount':amount,'currency':'INR'})
-    return render(request,"PaymentPage.html",
-                  {'category':category,
-                   'cart_count':cart_count,
-                   'pay_str':pay_str,
-                   })
+        payment = client.order.create({'amount': amount, 'currency': 'INR'})
+
+    return render(request, "PaymentPage.html", {
+        'category': category,
+        'cart_count': cart_count,
+        'pay_str': pay_str,
+    })
+
 
 def payment_success(request):
     uname = request.session.get('username')
