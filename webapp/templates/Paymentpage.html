@@ -2,186 +2,149 @@
 {% load static %}
 {% block content %}
 
-<section id="billboard">
+<section id="billboard" class="payment-billboard">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
 
-                <button class="prev slick-arrow">
+                <button class="prev slick-arrow" type="button">
                     <i class="icon icon-arrow-left"></i>
                 </button>
 
                 <div class="main-slider pattern-overlay">
-                    <div class="slider-item">
-                        <div class="banner-content">
+
+                    <!-- FIXED: flex alignment -->
+                    <div class="slider-item payment-hero d-flex align-items-center justify-content-between flex-wrap"
+                         style="gap:50px;">
+
+                        <div class="banner-content payment-content">
                             <h2 class="banner-title">Payment</h2>
 
                             <form method="post">
                                 {% csrf_token %}
                                 <div class="btn-wrap">
-                                    <button id="paybtn" class="btn btn-primary"
-                                            style="width:200px; border-radius:12px; height:50px;">Pay Now
+                                    <button id="paybtn" type="button" class="btn pay-btn">
+                                        Proceed
                                     </button>
-
                                 </div>
                             </form>
-                        </div><!-- banner-content -->
-                        <img src="{% static 'web/images/payment.jpg' %}" alt="checkout banner" class="banner-image"
-                             width="350px" style="border-radius:60px; object-fit: cover; height:500px;">
-                    </div><!-- slider-item -->
+                        </div>
 
+                        <img src="{% static 'web/images/payment.jpg' %}"
+                             alt="checkout banner"
+                             class="banner-image payment-img">
+                    </div>
 
                 </div>
+
+                <button class="next slick-arrow" type="button">
+                    <i class="icon icon-arrow-right"></i>
+                </button>
+
             </div>
         </div>
-
+    </div>
 </section>
 
 <section id="checkout" class="py-5">
     <div class="container">
-
+        <!-- you can add summary later if you want -->
     </div>
-
 </section>
 
-
 <style>
-    body {
-      background-color: #f9f7f6;
-      font-family: 'Poppins', sans-serif;
-      color: #222;
+  /* =========================
+     PAYMENT PAGE ONLY (SCOPED)
+  ========================= */
+
+  .payment-billboard{
+    padding: 30px 0;
+  }
+
+  .payment-hero .payment-content{
+    flex: 1;
+    min-width: 320px;
+  }
+
+  .payment-hero .payment-img{
+    width: 420px;
+    height: 420px;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    display: block;
+  }
+
+  /* Fix random blue underline / blue links in this section */
+  .payment-billboard a{
+    text-decoration: none !important;
+  }
+
+  /* Button: match your theme */
+  .pay-btn{
+    width: 220px;
+    height: 52px;
+    border-radius: 12px;
+    background: #c5a992 !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pay-btn:hover{
+    background: #b9957a !important;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px){
+    .payment-hero{
+      justify-content: center !important;
+      text-align: left;
     }
-
-
-    .checkout-container {
-      max-width: 1200px;
-      margin: 60px auto;
-      display: flex;
-      gap: 40px;
-      justify-content: space-between;
-    }
-
-    .billing-section,
-    .order-summary {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      padding: 30px;
-    }
-
-    .billing-section {
-      flex: 1.5;
-    }
-
-    .order-summary {
-      flex: 1;
-    }
-
-    h3 {
-      border-bottom: 3px solid #8B5E3C;
-      display: inline-block;
-      margin-bottom: 20px;
-      padding-bottom: 6px;
-    }
-
-    label {
-      font-weight: 500;
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    input,
-    select,
-    textarea {
+    .payment-hero .payment-img{
       width: 100%;
-      border: 1px solid #ccc;
-      padding: 12px;
-      border-radius: 6px;
-      margin-bottom: 20px;
-      font-size: 15px;
+      height: 320px;
     }
-
-    .order-summary h4 {
-      font-size: 20px;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    .order-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .total {
-      border-top: 1px solid #ddd;
-      margin-top: 15px;
-      padding-top: 10px;
-      font-weight: 700;
-      color: #8B5E3C;
-    }
-
-    .btn-checkout {
-      display: inline-block;
-      width: 100%;
-      text-align: center;
-      background-color: #8B5E3C;
-      color: white;
-      padding: 14px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn-checkout:hover {
-      background-color: #b8794f;
-    }
+  }
 </style>
-
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% if messages %}
-{% for i in messages %}
-{% if 'success' in i.tags %}
-<script> swal('{{i}}', '', 'success'); </script>
-
-{% elif 'warning' in i.tags %}
-<script> swal('{{i}}', '', 'warning'); </script>
-
-{% elif 'info' in i.tags %}
-<script> swal('{{i}}', '', 'info'); </script>
-
-{% elif 'error' in i.tags %}
-<script> swal('{{i}}', '', 'error'); </script>
-
-{% endif %}
-{% endfor %}
+  {% for i in messages %}
+    {% if 'success' in i.tags %}
+      <script> swal('{{i}}', '', 'success'); </script>
+    {% elif 'warning' in i.tags %}
+      <script> swal('{{i}}', '', 'warning'); </script>
+    {% elif 'info' in i.tags %}
+      <script> swal('{{i}}', '', 'info'); </script>
+    {% elif 'error' in i.tags %}
+      <script> swal('{{i}}', '', 'error'); </script>
+    {% endif %}
+  {% endfor %}
 {% endif %}
 
-
-<!--Razorpay script-->
+<!-- Razorpay -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script>
-    var options = {
-        "key": "rzp_test_0ib0jPwwZ7I1lT",
-        "amount": "{{ pay_str }}",
-        "currency": "INR",
-        "name": "BookFlix",
-        "description": "Order Payment",
-
-        "handler": function (response){
-            // When payment succeeds, redirect to Django success page
-            window.location.href = "/Bookshop/payment_success/";
-        }
-    };
-
-    var rzp = new Razorpay(options);
-
-    document.getElementById("paybtn").onclick = function(e){
-        rzp.open();
-        e.preventDefault();
+  var options = {
+    key: "rzp_test_0ib0jPwwZ7I1lT",
+    amount: "{{ pay_str }}",
+    currency: "INR",
+    name: "BookFlix",
+    description: "Order Payment",
+    handler: function (response){
+      window.location.href = "/Bookshop/payment_success/";
     }
+  };
+
+  var rzp = new Razorpay(options);
+
+  document.getElementById("paybtn").addEventListener("click", function(e){
+    rzp.open();
+    e.preventDefault();
+  });
 </script>
+
 {% endblock %}
