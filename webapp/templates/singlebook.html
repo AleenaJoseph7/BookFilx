@@ -4,79 +4,79 @@
 
 <section class="container py-5">
 
-  <div class="row align-items-center">
+    <div class="row align-items-center">
 
-    <!-- Book Image -->
-    <div class="col-md-5 text-center">
-      <img src="{{ books.Book_cover.url }}" class="img-fluid shadow rounded" style="max-height:450px;">
-    </div>
+        <!-- Book Image -->
+        <div class="col-md-5 text-center">
+            <img src="{{ books.Book_cover.url }}" class="img-fluid shadow rounded" style="max-height:450px;">
+        </div>
 
-    <!-- Book Details -->
-    <div class="col-md-7">
+        <!-- Book Details -->
+        <div class="col-md-7">
 
-      <h2 class="fw-bold">{{ books.Book_title }}</h2>
-      <p class="text-muted">By {{ books.Book_author }}</p>
+            <h2 class="fw-bold">{{ books.Book_title }}</h2>
+            <p class="text-muted">By {{ books.Book_author }}</p>
 
-      <p class="mt-3" style="text-align:justify;">
-        {{ books.Book_description }}
-      </p>
+            <p class="mt-3" style="text-align:justify;">
+                {{ books.Book_description }}
+            </p>
 
-      <h4 class="mt-3 text-success">Rs. {{ books.Book_price }}</h4>
+            <h4 class="mt-3 text-success">Rs. {{ books.Book_price }}</h4>
 
-      {% if request.session.username %}
+            {% if request.session.username %}
 
-      <form method="post" action="{% url 'savecart' %}" class="mt-4">
-        {% csrf_token %}
+            <form method="post" action="{% url 'savecart' %}" class="mt-4">
+                {% csrf_token %}
 
-        <input type="hidden" name="singlebook_title" value="{{ books.Book_title }}">
-        <input type="hidden" name="singlebook_price" id="singlebook_price" value="{{ books.Book_price }}">
-        <input type="hidden" name="singlebook_username" value="{{ request.session.username }}">
+                <input type="number" min="1" max="10" class="form-control mb-3 mt-3"
+                       style="width:175px;" placeholder="quantity" value="1"
+                       name="singlebook_quantity" id="singlebook_quantity">
+                <input type="text" class="form-control mb-3 mt-3" style="width:175px;"
+                       placeholder="Rs " name="singlebook_total" id="singlebook_total" value="{{books.Book_price}}">
+                <input type="hidden" class="form-control mb-3 mt-3" placeholder="Book Title"
+                       value="{{books.Book_title}}" name="singlebook_title">
+                <input type="hidden" class="form-control mb-3 mt-3" placeholder="Book price"
+                       value="{{books.Book_price}}" name="singlebook_price" id="singlebook_price">
+                <input type="hidden" class="form-control mb-3 mt-3" placeholder="Username"
+                       value="{{request.session.username}}" name="singlebook_username">
 
-        <div class="d-flex align-items-center gap-3">
-
-          <input type="number" min="1" max="10" value="1"
-                 id="singlebook_quantity" name="singlebook_quantity"
-                 class="form-control" style="width:120px;">
-
-          <input type="text" id="singlebook_total" name="singlebook_total"
-                 class="form-control" readonly style="width:150px;"
-                 placeholder="Total" value="{{ books.Book_price }}">
-
-          <button type="submit" class="btn btn-success px-4">
-            Add to Cart
-          </button>
+                <button type="submit" class="btn btn-success px-4">
+                    Add to Cart
+                </button>
 
         </div>
 
-      </form>
+        </form>
 
-      {% else %}
+        {% else %}
 
-      <a href="{% url 'Usersigninpage' %}" class="btn btn-outline-primary mt-4">
-        Please Login to Add to Cart
-      </a>
-
-      {% endif %}
-
-      <div class="mt-4">
-        <a href="{% url 'Filterbooks' category_name=books.Book_category %}"
-           class="btn btn-outline-dark">
-          ← Go Back
+        <a href="{% url 'Usersigninpage' %}" class="btn btn-outline-primary mt-4">
+            Please Login to Add to Cart
         </a>
-      </div>
+
+        {% endif %}
+
+        <div class="mt-4" style="margin-left:1200px">
+            <a href="{% url 'Filterbooks' category_name=books.Book_category %}"
+               class="btn bg-primary" >
+                ← Go Back
+            </a>
+        </div>
 
     </div>
 
-  </div>
+    </div>
 
 </section>
 
 <script>
-document.getElementById("singlebook_quantity").addEventListener("input", function() {
-  let price = parseFloat(document.getElementById("singlebook_price").value);
-  let qty = parseInt(this.value);
-  document.getElementById("singlebook_total").value = price * qty;
-});
+    document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById('singlebook_quantity').addEventListener('change',function(){
+    let price =document.getElementById('singlebook_price').value;
+    let qnty=document.getElementById('singlebook_quantity').value;
+    document.getElementById('singlebook_total').value=price*qnty;
+    })
+    })
 </script>
 
 {% endblock %}

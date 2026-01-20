@@ -268,7 +268,7 @@ def adminlogin(request):
                 msg=messages.success(request, "Admin Login Successful")
                 return redirect(index)
             else:
-                messages.error(request,"Incorrect Password or Username!")
+                messages.error(request,"Incorrect Password")
                 return redirect(adminloginpage)
         else:
             messages.error(request, "Username doesnt Exist!")
